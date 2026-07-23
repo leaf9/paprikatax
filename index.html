@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>See What Your Family Could Keep | PaprikaTax</title>
+    <meta name="description" content="Hire your kids for real work, shift income to their 0% bracket, and carry the documentation to prove it. Free 60-second savings estimate from a licensed CPA firm." />
+    <meta property="og:title" content="You're already paying your kids. You're just doing it the expensive way." />
+    <meta property="og:description" content="See what your family could keep instead of mailing it to the IRS. Free 60-second estimate." />
+    <meta property="og:type" content="website" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/svg+xml" href="/assets/paprika-tax-logo.svg" />
+
+    <!-- Google Tag Manager (same container as paprikatax.com) -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || []
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : ''
+        j.async = true
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl
+        f.parentNode.insertBefore(j, f)
+      })(window, document, 'script', 'dataLayer', 'GTM-P58K4T2L')
+    </script>
+
+    <!-- Meta Pixel (same pixel as paprikatax.com) -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        }
+        if (!f._fbq) f._fbq = n
+        n.push = n
+        n.loaded = !0
+        n.version = '2.0'
+        n.queue = []
+        t = b.createElement(e)
+        t.async = !0
+        t.src = v
+        s = b.getElementsByTagName(e)[0]
+        s.parentNode.insertBefore(t, s)
+      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js')
+      fbq('init', '1227262212899180')
+      fbq('track', 'PageView')
+    </script>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-P58K4T2L"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+
+    <div id="root"></div>
+
+    <!--
+      Hidden static form so Netlify detects the lead form at deploy time.
+      The React estimator submits to this form name via fetch.
+    -->
+    <form name="savings-report-leads" data-netlify="true" netlify-honeypot="company" hidden>
+      <input type="text" name="firstName" />
+      <input type="email" name="email" />
+      <input type="text" name="role" />
+      <input type="text" name="hoursPerYear" />
+      <input type="text" name="estimatedPay" />
+      <input type="text" name="marginalRate" />
+      <input type="text" name="estimatedSavings" />
+      <input type="text" name="utm_source" />
+      <input type="text" name="utm_medium" />
+      <input type="text" name="utm_campaign" />
+      <input type="text" name="utm_content" />
+      <input type="text" name="fbclid" />
+      <input type="text" name="landedAt" />
+      <input type="text" name="company" />
+    </form>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
