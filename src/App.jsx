@@ -10,7 +10,7 @@ import Faqs from './pages/Faqs'
 import About from './pages/About'
 import Connect from './pages/Connect'
 import BeardTaxLanding from './pages/BeardTaxLanding'
-import { captureAttribution, track } from './lib/tracking'
+import { track } from './lib/tracking'
 
 // Standard site chrome. Landing pages render OUTSIDE this layout so ad
 // traffic gets a single conversion path with no nav exits.
@@ -28,10 +28,6 @@ function SiteLayout() {
 
 export default function App() {
   const location = useLocation()
-
-  useEffect(() => {
-    captureAttribution()
-  }, [])
 
   // Scroll to top on route change (respect #hash anchors), notify GTM of SPA views.
   useEffect(() => {

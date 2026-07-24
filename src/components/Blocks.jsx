@@ -1,8 +1,17 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { LINKS, PRICE, VIMEO_EXPLAINER_ID } from '../config'
-import { CTA_BAND } from '../content/global'
-import { checkoutUrl, track } from '../lib/tracking'
+import { CTA_BAND, ESTIMATOR_CTA } from '../content/global'
+import { checkoutUrl, track, withAttribution } from '../lib/tracking'
+
+// Outbound link to the external savings estimator, attribution attached.
+export function estimatorUrl() {
+  return withAttribution(LINKS.estimatorApp)
+}
+
+export function trackEstimatorClick() {
+  track('EstimatorClick', {})
+}
 
 // ----- interior page hero (optional faded family-photo background) -----
 export function PageHero({ eyebrow, headline, sub, bg, children }) {
@@ -37,7 +46,8 @@ export function SectionHead({ kicker, headline, sub, center }) {
 // ----- reusable CTA band -----
 export function CtaBand({ headline, sub, primaryLabel, primaryHref, secondaryLabel, secondaryHref }) {
   const onBuy = () => track('InitiateCheckout', { value: PRICE.kit, currency: 'USD' })
-  const primary = primaryHref || '/#estimate'
+  const primary = primaryHref || estimatorUrl()
+  const primaryIsEstimator = !primaryHref
   const secondary = secondaryHref ?? checkoutUrl(LINKS.checkout)
   return (
     <section className="cta-band">
@@ -45,7 +55,11 @@ export function CtaBand({ headline, sub, primaryLabel, primaryHref, secondaryLab
         <h2>{headline || CTA_BAND.headline}</h2>
         <p className="sub">{sub || CTA_BAND.sub}</p>
         <div className="actions">
-          <PolyLink className="btn btn-primary" href={primary}>
+          <PolyLink
+            className="btn btn-primary"
+            href={primary}
+            onClick={primaryIsEstimator ? trackEstimatorClick : undefined}
+          >
             {primaryLabel || CTA_BAND.primary}
           </PolyLink>
           {secondaryLabel !== null && (
@@ -137,6 +151,38 @@ export function FaqList({ items }) {
           <div className="a">{f.a}</div>
         </details>
       ))}
+    </div>
+  )
+}
+
+// ----- estimator hand-off card (calculator is external for regulatory reasons) -----
+export function EstimatorCta() {
+  return (
+    <div className="estimator est-cta" id="estimate">
+      <div className="mini-steps">
+        {ESTIMATOR_CTA.steps.map((s) => (
+          <div className="mini-step" key={s.n}>
+            <span className="num">{s.n}</span>
+            <div>
+              <strong>{s.label}</strong>
+              <p>{s.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <a
+        className="btn btn-primary btn-block"
+        href={estimatorUrl()}
+        onClick={trackEstimatorClick}
+      >
+        {ESTIMATOR_CTA.cta} →
+      </a>
+      <p className="micro" style={{ textAlign: 'center' }}>
+        {ESTIMATOR_CTA.micro}
+      </p>
+      <p className="fineprint" style={{ marginTop: 14 }}>
+        {ESTIMATOR_CTA.note}
+      </p>
     </div>
   )
 }

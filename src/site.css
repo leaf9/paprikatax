@@ -283,6 +283,47 @@
   z-index: 1;
 }
 
+/* ----- estimator hand-off card ----- */
+.mini-steps {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 640px) {
+  .mini-steps { grid-template-columns: repeat(3, 1fr); }
+}
+
+.mini-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.mini-step .num {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--paprika);
+  color: #fff;
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mini-step strong { font-size: 15px; display: block; }
+
+.mini-step p { font-size: 13px; color: var(--ink-3); margin-top: 2px; }
+
 /* ----- family photo bands ----- */
 .photo-band {
   display: grid;

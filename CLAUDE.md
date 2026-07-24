@@ -26,9 +26,17 @@ proof, i.e. a signed CPA Opinion Letter).
 
 ## Funnel & tracking
 
-Ad → `/beard-tax` → 3-question estimator → **email gate** (lead) → results + $97 offer
-→ checkout at `app.paprikatax.com/pay-now` (UTMs/fbclid/email passed through).
-Home page embeds the same estimator for organic traffic.
+Ad → `/beard-tax` → estimator CTA → **external estimator** at
+`app.paprikatax.com/savings-estimator` (kept external per client regulations,
+2026-07-24) → checkout at `app.paprikatax.com/pay-now`. UTMs/fbclid pass through
+to both (captured in `main.jsx` BEFORE first render — don't move it back into an
+effect; links are computed at render time).
+
+**Dormant**: `src/components/Estimator.jsx` + `src/lib/estimator.js` are the fully
+built embedded estimator with email gate (lead capture + Lead pixel event). Unused
+but kept — regulations are "for now." The `savings-report-leads` Netlify form in
+index.html stays for the same reason. If regulations ease, swap `EstimatorCta`
+back to `Estimator` and on-page lead capture returns.
 
 - Meta Pixel `1227262212899180`: PageView, ViewContent (per route), Lead (value =
   est. savings), InitiateCheckout, VideoPlay, Contact. GTM `GTM-P58K4T2L`; dataLayer

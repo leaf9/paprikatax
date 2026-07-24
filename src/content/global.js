@@ -48,3 +48,16 @@ export const CTA_BAND = {
   primary: 'Estimate Savings',
   secondary: 'Buy Now — $97',
 }
+
+// The estimator lives in the client's app (kept external for regulatory
+// reasons); this block frames the hand-off.
+export const ESTIMATOR_CTA = {
+  steps: [
+    { n: '1', label: 'Pick the role', detail: 'What kind of work would your child do?' },
+    { n: '2', label: 'Set the hours', detail: 'School year and summer — be realistic.' },
+    { n: '3', label: 'See your number', detail: 'Real wage data, your income bracket.' },
+  ],
+  cta: 'Estimate my savings',
+  micro: 'Free · about 60 seconds · no signup required',
+  note: 'Opens the PaprikaTax estimator. Numbers are estimates, not tax advice — your kit calculates exact, defensible figures for your state and county.',
+}

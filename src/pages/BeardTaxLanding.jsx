@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import TokenCoin from '../components/TokenCoin'
-import Estimator from '../components/Estimator'
+import { EstimatorCta, estimatorUrl, trackEstimatorClick } from '../components/Blocks'
 import { LINKS, PRICE } from '../config'
 import {
   HERO, STORY, FAMILY_TAX, EXAMPLES, SLOPPY, OFFER, FOUNDER,
@@ -11,8 +11,8 @@ import { usePageMeta } from '../lib/meta'
 
 // The "beard tax" ad landing page — deliberately nav-free (rendered outside
 // SiteLayout) with a single conversion path. Ad traffic points here.
+// The estimator itself is external (regulatory) — CTAs hand off to the app.
 export default function BeardTaxLanding() {
-  const [leadEmail, setLeadEmail] = useState('')
   const [showSticky, setShowSticky] = useState(false)
   const heroRef = useRef(null)
 
@@ -32,13 +32,7 @@ export default function BeardTaxLanding() {
     return () => io.disconnect()
   }, [])
 
-  const scrollToEstimate = (e) => {
-    e?.preventDefault()
-    document.getElementById('estimate')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    track('EstimatorView', {})
-  }
-
-  const buyUrl = checkoutUrl(LINKS.checkout, leadEmail ? { email: leadEmail } : {})
+  const buyUrl = checkoutUrl(LINKS.checkout)
   const onBuyClick = () => track('InitiateCheckout', { value: PRICE.kit, currency: 'USD' })
 
   return (
@@ -66,7 +60,7 @@ export default function BeardTaxLanding() {
               <strong>thousands every year</strong>, with documentation that holds up.
             </p>
             <div className="hero-ctas" style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
-              <a href="#estimate" className="btn btn-primary" onClick={scrollToEstimate}>
+              <a href={estimatorUrl()} className="btn btn-primary" onClick={trackEstimatorClick}>
                 {HERO.cta}{' '}→
               </a>
               <a href={buyUrl} className="btn btn-ghost" onClick={onBuyClick}>
@@ -179,17 +173,7 @@ export default function BeardTaxLanding() {
               Three questions. Real wage data. The number the IRS would rather you never calculate.
             </p>
           </div>
-          <Estimator
-            onLeadCaptured={setLeadEmail}
-            bridge={
-              <>
-                This number is an <strong>estimate</strong>. Without a defensible wage calculation
-                and proof-of-work records, it’s also a <strong>liability</strong> — a beard with no
-                token. The Paprika Kit turns it into a documented, CPA-signed strategy in about 15
-                minutes of your time.
-              </>
-            }
-          />
+          <EstimatorCta />
         </div>
       </section>
 
@@ -338,7 +322,7 @@ export default function BeardTaxLanding() {
           <h2>{FINAL_CTA.headline}</h2>
           <p className="sub">{FINAL_CTA.sub}</p>
           <div className="final-ctas">
-            <a href="#estimate" className="btn btn-primary" onClick={scrollToEstimate}>
+            <a href={estimatorUrl()} className="btn btn-primary" onClick={trackEstimatorClick}>
               {FINAL_CTA.primary} →
             </a>
             <a href={buyUrl} className="btn btn-ghost" onClick={onBuyClick}>
@@ -364,27 +348,13 @@ export default function BeardTaxLanding() {
 
       {/* STICKY BAR */}
       <div className={`sticky-bar ${showSticky ? 'show' : ''}`}>
-        {leadEmail ? (
-          <>
-            <div className="label">
-              The Paprika Kit
-              <small>${PRICE.kit} once · 15-min intake · free email support</small>
-            </div>
-            <a href={buyUrl} className="btn btn-primary" onClick={onBuyClick}>
-              Get the kit →
-            </a>
-          </>
-        ) : (
-          <>
-            <div className="label">
-              What could your family keep?
-              <small>Free estimate · 60 seconds</small>
-            </div>
-            <a href="#estimate" className="btn btn-primary" onClick={scrollToEstimate}>
-              See my number →
-            </a>
-          </>
-        )}
+        <div className="label">
+          What could your family keep?
+          <small>Free estimate · 60 seconds</small>
+        </div>
+        <a href={estimatorUrl()} className="btn btn-primary" onClick={trackEstimatorClick}>
+          See my number →
+        </a>
       </div>
     </>
   )

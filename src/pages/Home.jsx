@@ -1,7 +1,8 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Estimator from '../components/Estimator'
-import { SectionHead, CtaBand, Steps, Testimonials, FaqList, VideoEmbed } from '../components/Blocks'
+import {
+  SectionHead, CtaBand, Steps, Testimonials, FaqList, VideoEmbed, EstimatorCta,
+  estimatorUrl, trackEstimatorClick,
+} from '../components/Blocks'
 import { usePageMeta } from '../lib/meta'
 import { LINKS, PRICE } from '../config'
 import { checkoutUrl, track } from '../lib/tracking'
@@ -14,8 +15,7 @@ export default function Home() {
     'Hire Your Kids. Lower Your Taxes. Do It Right.',
     'A CPA-backed system that helps business-owner parents maximize safe tax savings, stay protected in an IRS audit, and give their kids real-world work experience.'
   )
-  const [leadEmail, setLeadEmail] = useState('')
-  const buyUrl = checkoutUrl(LINKS.checkout, leadEmail ? { email: leadEmail } : {})
+  const buyUrl = checkoutUrl(LINKS.checkout)
   const onBuy = () => track('InitiateCheckout', { value: PRICE.kit, currency: 'USD' })
 
   return (
@@ -36,7 +36,7 @@ export default function Home() {
               that holds up.
             </p>
             <div className="hero-ctas" style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
-              <a href="#estimate" className="btn btn-primary">
+              <a href={estimatorUrl()} className="btn btn-primary" onClick={trackEstimatorClick}>
                 {HERO.primary}
               </a>
               <a href={buyUrl} className="btn btn-ghost" onClick={onBuy}>
@@ -122,7 +122,7 @@ export default function Home() {
             headline="See what your family could keep."
             sub="Three questions. Real wage data. The number the IRS would rather you never calculate."
           />
-          <Estimator onLeadCaptured={setLeadEmail} />
+          <EstimatorCta />
         </div>
       </section>
 

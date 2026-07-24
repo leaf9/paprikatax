@@ -31,7 +31,9 @@ export function getAttribution() {
   }
 }
 
-export function checkoutUrl(base, extra = {}) {
+// Appends captured attribution (or organic fallbacks) to any outbound URL —
+// checkout, the external savings estimator, etc.
+export function withAttribution(base, extra = {}) {
   const url = new URL(base)
   const attr = getAttribution()
   Object.entries({ ...attr, ...extra }).forEach(([k, v]) => {
@@ -47,9 +49,19 @@ export function checkoutUrl(base, extra = {}) {
   return url.toString()
 }
 
+export const checkoutUrl = withAttribution
+
+// Meta standard events go through fbq('track'); anything else is a custom event.
+const FBQ_STANDARD = new Set([
+  'PageView', 'ViewContent', 'Lead', 'InitiateCheckout', 'Contact', 'CompleteRegistration',
+  'AddToCart', 'Purchase', 'Search', 'Subscribe',
+])
+
 export function track(event, data = {}) {
   try {
-    if (typeof window.fbq === 'function') window.fbq('track', event, data)
+    if (typeof window.fbq === 'function') {
+      window.fbq(FBQ_STANDARD.has(event) ? 'track' : 'trackCustom', event, data)
+    }
   } catch {
     /* pixel blocked */
   }

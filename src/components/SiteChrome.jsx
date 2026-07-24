@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { NAV, FOOTER } from '../content/global'
 import { LINKS } from '../config'
-import { checkoutUrl, track } from '../lib/tracking'
+import { checkoutUrl, track, withAttribution } from '../lib/tracking'
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
@@ -48,7 +48,7 @@ export function SiteHeader() {
           </nav>
 
           <div className="header-ctas">
-            <a className="est-link" href={estimateHref(location.pathname)}>
+            <a className="est-link" href={estimateHref()} onClick={() => track('EstimatorClick', {})}>
               {NAV.estimateCta}
             </a>
             <a className="btn btn-primary" href={checkoutUrl(LINKS.checkout)} onClick={onBuy}>
@@ -77,7 +77,7 @@ export function SiteHeader() {
           <Link to="/about">About</Link>
           <Link to="/connect">Connect</Link>
           <div className="menu-ctas">
-            <a className="btn btn-ghost" href={estimateHref(location.pathname)}>
+            <a className="btn btn-ghost" href={estimateHref()} onClick={() => track('EstimatorClick', {})}>
               {NAV.estimateCta}
             </a>
             <a className="btn btn-primary" href={checkoutUrl(LINKS.checkout)} onClick={onBuy}>
@@ -90,9 +90,9 @@ export function SiteHeader() {
   )
 }
 
-// On the homepage the estimator is embedded; elsewhere link back to it.
-function estimateHref(pathname) {
-  return pathname === '/' ? '#estimate' : '/#estimate'
+// The estimator lives in the client's app (external for regulatory reasons).
+function estimateHref() {
+  return withAttribution(LINKS.estimatorApp)
 }
 
 export function SiteFooter() {
