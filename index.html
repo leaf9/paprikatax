@@ -3,15 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>See What Your Family Could Keep | PaprikaTax</title>
-    <meta name="description" content="Hire your kids for real work, shift income to their 0% bracket, and carry the documentation to prove it. Free 60-second savings estimate from a licensed CPA firm." />
-    <meta property="og:title" content="You're already paying your kids. You're just doing it the expensive way." />
-    <meta property="og:description" content="See what your family could keep instead of mailing it to the IRS. Free 60-second estimate." />
+    <title>Hire Your Kids. Lower Your Taxes. Do It Right. | PaprikaTax</title>
+    <meta name="description" content="A CPA-backed system that helps business-owner parents maximize safe tax savings, stay protected in an IRS audit, and give their kids real-world work and money experience." />
+    <meta property="og:title" content="Hire Your Kids. Lower Your Taxes. Do It Right." />
+    <meta property="og:description" content="CPA-calculated wages, a signed CPA Opinion Letter, and everything you need to hire your kids the right way — $97, once." />
     <meta property="og:type" content="website" />
-    <meta name="robots" content="noindex" />
     <link rel="icon" type="image/svg+xml" href="/assets/paprika-tax-logo.svg" />
 
-    <!-- Google Tag Manager (same container as paprikatax.com) -->
+    <!-- Google Tag Manager (same container as current site) -->
     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || []
@@ -25,7 +24,7 @@
       })(window, document, 'script', 'dataLayer', 'GTM-P58K4T2L')
     </script>
 
-    <!-- Meta Pixel (same pixel as paprikatax.com) -->
+    <!-- Meta Pixel (same pixel as current site) -->
     <script>
       !(function (f, b, e, v, n, t, s) {
         if (f.fbq) return
@@ -60,10 +59,7 @@
 
     <div id="root"></div>
 
-    <!--
-      Hidden static form so Netlify detects the lead form at deploy time.
-      The React estimator submits to this form name via fetch.
-    -->
+    <!-- Hidden static forms so Netlify detects them at deploy time. -->
     <form name="savings-report-leads" data-netlify="true" netlify-honeypot="company" hidden>
       <input type="text" name="firstName" />
       <input type="email" name="email" />
@@ -78,6 +74,12 @@
       <input type="text" name="utm_content" />
       <input type="text" name="fbclid" />
       <input type="text" name="landedAt" />
+      <input type="text" name="company" />
+    </form>
+    <form name="connect-messages" data-netlify="true" netlify-honeypot="company" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
       <input type="text" name="company" />
     </form>
 

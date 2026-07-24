@@ -67,13 +67,20 @@ Key conversion mechanics on the page:
 
 ## Launch checklist
 
-1. Deploy to Netlify (`npm run build`, publish `dist/`) — suggest subdomain
-   **keep.paprikatax.com** (or try.paprikatax.com). Keep the WP homepage as-is.
-2. In Netlify: enable form notifications (email to client) and/or wire a Make.com scenario
-   (Netlify form webhook → ESP list + Google Sheet).
+_Updated 2026-07-24: the repo now contains the full site redesign; the landing page is the
+`/beard-tax` route on the main domain (no subdomain)._
+
+1. Deploy to Netlify (`npm run build`, publish `dist/`). Stage on a Netlify preview URL
+   for client review; production launch = pointing paprikatax.com DNS at Netlify.
+   **Before DNS cutover**: migrate or redirect the WP blog posts that Resources links to
+   (or move WP to blog.paprikatax.com) and port the privacy policy.
+2. In Netlify: enable form notifications for `savings-report-leads` and `connect-messages`
+   (email to client) and/or wire a Make.com scenario (webhook → ESP list + Google Sheet).
 3. Hook the email sequence (docs/email-sequence.md) to the lead list in the client's ESP.
-4. Repoint the **Peter the Great** ad's destination URL to the new page with UTMs, e.g.
+4. Repoint the **Peter the Great** ad's destination URL to
+   `https://paprikatax.com/beard-tax` with UTMs, e.g.
    `?utm_source=facebook&utm_medium=paid&utm_campaign=beard-tax&utm_content=peter-video`.
+   (Until DNS cutover, the ad can point at the Netlify URL: `<site>.netlify.app/beard-tax`.)
 5. **Change campaign objective**: duplicate the ad set into an OUTCOME_LEADS campaign
    optimizing for the pixel `Lead` event (link-click optimization attracts clickers, not
    buyers). Once ~50 purchases/mo exist, test a Purchase-optimized campaign.

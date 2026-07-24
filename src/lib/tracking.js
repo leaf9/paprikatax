@@ -37,10 +37,12 @@ export function checkoutUrl(base, extra = {}) {
   Object.entries({ ...attr, ...extra }).forEach(([k, v]) => {
     if (v) url.searchParams.set(k, v)
   })
+  // Fallback attribution for visitors who arrived without UTMs (organic/direct).
+  // Paid traffic keeps its captured UTMs from the ad click.
   if (!url.searchParams.get('utm_source')) {
-    url.searchParams.set('utm_source', 'landing')
-    url.searchParams.set('utm_medium', 'lp')
-    url.searchParams.set('utm_campaign', 'beard-tax')
+    url.searchParams.set('utm_source', 'paprikatax-site')
+    url.searchParams.set('utm_medium', 'website')
+    url.searchParams.set('utm_campaign', 'organic')
   }
   return url.toString()
 }
