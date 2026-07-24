@@ -2,7 +2,7 @@
    Site chrome & page styles — extends the landing design system (styles.css).
 --------------------------------------------------------------------------- */
 
-/* ----- sticky site header ----- */
+/* ----- sticky site header (transforms into a floating pill on scroll) ----- */
 .site-header {
   position: sticky;
   top: 0;
@@ -11,6 +11,7 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(250, 245, 236, 0.12);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .site-header .bar {
@@ -18,7 +19,43 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 12px 0;
+  height: 58px;
+  margin: 6px auto;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease,
+    padding 0.3s ease, max-width 0.3s ease;
+  max-width: 1080px;
+}
+
+.site-header.pilled {
+  background: transparent;
+  border-bottom-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.site-header.pilled .bar {
+  background: rgba(41, 35, 28, 0.93);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-color: rgba(250, 245, 236, 0.16);
+  box-shadow: 0 12px 34px rgba(20, 16, 12, 0.35);
+  padding: 0 10px 0 20px;
+  max-width: 1010px;
+}
+
+@media (max-width: 979px) {
+  .site-header.pilled .bar {
+    max-width: 100%;
+    padding: 0 8px 0 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header, .site-header .bar { transition: none; }
 }
 
 .site-header .logo img {
@@ -40,6 +77,7 @@
   font-weight: 600;
   padding: 8px 12px;
   border-radius: 8px;
+  white-space: nowrap;
   transition: color 0.15s, background 0.15s;
 }
 
@@ -53,7 +91,7 @@
   gap: 10px;
 }
 
-.header-ctas .btn { padding: 11px 18px; font-size: 14.5px; }
+.header-ctas .btn { padding: 11px 18px; font-size: 14.5px; white-space: nowrap; }
 
 .header-ctas .est-link {
   color: rgba(250, 245, 236, 0.85);
@@ -61,6 +99,16 @@
   font-weight: 600;
   text-decoration: none;
   padding: 8px 10px;
+  white-space: nowrap;
+}
+
+/* narrow-desktop density so the full nav fits without wrapping */
+@media (min-width: 980px) and (max-width: 1150px) {
+  .site-nav { gap: 0; }
+  .site-nav a { font-size: 13.5px; padding: 7px 8px; }
+  .header-ctas { gap: 6px; }
+  .header-ctas .btn { padding: 10px 14px; font-size: 13.5px; }
+  .header-ctas .est-link { font-size: 13.5px; padding: 8px 6px; }
 }
 
 .header-ctas .est-link:hover { color: #fff; }
@@ -176,6 +224,25 @@
 }
 
 .page-hero .micro { color: rgba(250, 245, 236, 0.6); }
+
+/* ----- home hero photo ----- */
+.hero-photo {
+  display: flex;
+  justify-content: center;
+  order: -1;
+}
+
+.hero-photo img {
+  width: 100%;
+  max-width: 480px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(250, 245, 236, 0.14);
+}
+
+@media (min-width: 860px) {
+  .hero-photo { order: 2; }
+}
 
 /* ----- story band (home) ----- */
 .story-band {

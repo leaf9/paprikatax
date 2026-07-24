@@ -5,7 +5,15 @@ import { checkoutUrl, getAttribution, submitLead, track } from '../lib/tracking'
 
 const STEPS = { ROLE: 0, HOURS: 1, RATE: 2, GATE: 3, RESULT: 4 }
 
-export default function Estimator({ onLeadCaptured }) {
+const DEFAULT_BRIDGE = (
+  <>
+    This number is an <strong>estimate</strong>. Without a defensible wage calculation and
+    proof-of-work records, it’s also a <strong>liability</strong>. The Paprika Kit turns it into a
+    documented, CPA-signed strategy — in about 15 minutes of your time.
+  </>
+)
+
+export default function Estimator({ onLeadCaptured, bridge = DEFAULT_BRIDGE }) {
   const [step, setStep] = useState(STEPS.ROLE)
   const [roleId, setRoleId] = useState(null)
   const [schoolHrs, setSchoolHrs] = useState(4)
@@ -271,11 +279,7 @@ export default function Estimator({ onLeadCaptured }) {
             </p>
           )}
 
-          <div className="result-bridge">
-            This number is an <strong>estimate</strong>. Without a defensible wage calculation and
-            proof-of-work records, it’s also a <strong>liability</strong> — a beard with no token.
-            The Paprika Kit turns it into a documented, CPA-signed strategy.
-          </div>
+          <div className="result-bridge">{bridge}</div>
 
           <a
             className="btn btn-primary btn-block"
@@ -284,7 +288,7 @@ export default function Estimator({ onLeadCaptured }) {
           >
             Get the Paprika Kit — ${PRICE.kit}
           </a>
-          <p className="micro">One-time · Money-back guarantee · Secured by Stripe</p>
+          <p className="micro">One-time · No subscription · Secured by Stripe</p>
           <p className="sent-note">
             📬 Your full report is on its way to <strong>{email}</strong>. Numbers are estimates, not
             tax advice; the kit calculates your exact, defensible figures.

@@ -12,12 +12,6 @@ export const GROUPS = [
     title: 'Start here',
     items: [
       {
-        title: 'Peter the Great taxed beards!',
-        blurb: 'The 1698 story behind our token — and what a copper coin teaches about defensible tax strategy.',
-        href: 'https://paprikatax.com/peter-the-great-taxed-beards/',
-        tag: 'Story',
-      },
-      {
         title: 'The PaprikaTax Guide: hiring your kids, made simple',
         blurb: 'The official step-by-step guide to putting your kids on payroll the right way.',
         href: 'https://paprikatax.com/the-paprikatax-guide-hiring-your-kids-made-simple/',
@@ -103,6 +97,12 @@ export const GROUPS = [
         title: 'What hiring my kids taught me about family, work, and life',
         blurb: 'A founder’s reflections on working alongside his kids.',
         href: 'https://paprikatax.com/what-hiring-my-kids-taught-me-about-family-work-and-life/',
+        tag: 'Story',
+      },
+      {
+        title: 'Peter the Great taxed beards!',
+        blurb: 'The 1698 history lesson from our animated ad — and why proof beats good intentions.',
+        href: 'https://paprikatax.com/peter-the-great-taxed-beards/',
         tag: 'Story',
       },
     ],

@@ -16,11 +16,11 @@ export const TIERS = [
     tagline: 'Everything you need to do this right',
     features: [
       'CPA-calculated highest defensible hourly wage',
-      'Signed CPA Opinion Letter — your audit token',
+      'Signed CPA Opinion Letter',
       'Step-by-step playbooks and templates',
-      'Email Q&A with the firm',
+      '15-minute intake — we do the heavy lifting',
+      'Free email Q&A with the firm',
       '1 hour of audit support included',
-      'Money-back guarantee if unsatisfied',
     ],
     cta: 'Buy Now — $97',
     ctaHref: 'checkout',
@@ -50,9 +50,9 @@ export const TIERS = [
 export const ANCHOR =
   'A bespoke reasonable-compensation opinion from a CPA typically runs $1,500+. Doing nothing costs the average business-owner family four figures a year. The kit is $97. Once.'
 
-export const GUARANTEE = {
-  title: 'Money-back guarantee',
-  text: 'If the kit doesn’t work for your situation, email us and we’ll refund it. And if a compliant approach wouldn’t actually save you money, we’ll tell you that too — that’s the point of working with a real CPA firm.',
+export const SUPPORT = {
+  title: 'Easy — and you’re never on your own',
+  text: 'About 15 minutes of intake, then we do the heavy lifting. Free email support is included, and a live CPA session is available whenever you want a human — your $97 credits toward it.',
 }
 
 export const ADVISOR_NOTE = {
@@ -82,7 +82,7 @@ export const FAQ = {
     },
     {
       q: 'What if this doesn’t save me money?',
-      a: 'In some cases, a compliant approach may not reduce total tax — or may even increase it. Our role is to help you understand the tradeoffs and identify additional strategies that, alongside dependent compensation, often lead to meaningful savings. And there’s a money-back guarantee.',
+      a: 'In some cases, a compliant approach may not reduce total tax — or may even increase it. Our role is to help you understand the tradeoffs and identify additional strategies that, alongside dependent compensation, often lead to meaningful savings.',
     },
     {
       q: 'Does this replace my CPA?',

@@ -62,16 +62,18 @@ export default function BeardTaxLanding() {
             <h1>{HERO.headline}</h1>
             <p className="sub">
               Allowance. Phones. Clothes. Activities. All paid with dollars the IRS taxed first. Put
-              your kids on real payroll for real work, and the first <strong>$16,100</strong> each of
-              them earns can land in their <strong>0% federal bracket</strong> — with documentation
-              that holds up.
+              your kids on real payroll for real work instead — many families keep{' '}
+              <strong>thousands every year</strong>, with documentation that holds up.
             </p>
-            <div className="hero-ctas">
+            <div className="hero-ctas" style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
               <a href="#estimate" className="btn btn-primary" onClick={scrollToEstimate}>
                 {HERO.cta}{' '}→
               </a>
-              <p className="micro">{HERO.ctaMicro}</p>
+              <a href={buyUrl} className="btn btn-ghost" onClick={onBuyClick}>
+                {HERO.ctaBuy}
+              </a>
             </div>
+            <p className="micro">{HERO.ctaMicro}</p>
             <div className="trust-chips">
               {HERO.trustChips.map((chip) => (
                 <span key={chip}>{chip}</span>
@@ -99,6 +101,11 @@ export default function BeardTaxLanding() {
               </div>
             ))}
           </div>
+          <p style={{ marginTop: 18 }}>
+            <a href={STORY.watch.href} style={{ color: 'var(--gold)', fontWeight: 700 }}>
+              {STORY.watch.label}
+            </a>
+          </p>
         </div>
       </section>
 
@@ -172,7 +179,17 @@ export default function BeardTaxLanding() {
               Three questions. Real wage data. The number the IRS would rather you never calculate.
             </p>
           </div>
-          <Estimator onLeadCaptured={setLeadEmail} />
+          <Estimator
+            onLeadCaptured={setLeadEmail}
+            bridge={
+              <>
+                This number is an <strong>estimate</strong>. Without a defensible wage calculation
+                and proof-of-work records, it’s also a <strong>liability</strong> — a beard with no
+                token. The Paprika Kit turns it into a documented, CPA-signed strategy in about 15
+                minutes of your time.
+              </>
+            }
+          />
         </div>
       </section>
 
@@ -231,8 +248,8 @@ export default function BeardTaxLanding() {
             </div>
             <div className="offer-anchor">{OFFER.anchor}</div>
             <div className="guarantee">
-              <h4>🛡️ {OFFER.guarantee.title}</h4>
-              <p>{OFFER.guarantee.text}</p>
+              <h4>🤝 {OFFER.support.title}</h4>
+              <p>{OFFER.support.text}</p>
             </div>
             <div className="offer-cta">
               <div className="price-tag">
@@ -351,7 +368,7 @@ export default function BeardTaxLanding() {
           <>
             <div className="label">
               The Paprika Kit
-              <small>${PRICE.kit} once · money-back guarantee</small>
+              <small>${PRICE.kit} once · 15-min intake · free email support</small>
             </div>
             <a href={buyUrl} className="btn btn-primary" onClick={onBuyClick}>
               Get the kit →

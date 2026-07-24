@@ -1,13 +1,12 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import TokenCoin from '../components/TokenCoin'
 import Estimator from '../components/Estimator'
 import { SectionHead, CtaBand, Steps, Testimonials, FaqList, VideoEmbed } from '../components/Blocks'
 import { usePageMeta } from '../lib/meta'
 import { LINKS, PRICE } from '../config'
 import { checkoutUrl, track } from '../lib/tracking'
 import {
-  HERO, STORY_BAND, FAMILY_TAX, VIDEO, EXAMPLES, WHAT_YOU_GET, PROCESS, TESTIMONIALS, FAQ_TEASER,
+  HERO, FAMILY_TAX, VIDEO, EXAMPLES, WHAT_YOU_GET, PROCESS, TESTIMONIALS, FAQ_TEASER,
 } from '../content/home'
 
 export default function Home() {
@@ -29,9 +28,9 @@ export default function Home() {
             <h1>{HERO.headline}</h1>
             <p className="sub">
               You already support your kids with dollars the IRS taxed first. Put them on real
-              payroll for real work, and the first <strong>$16,100</strong> each of them earns can
-              land in their <strong>0% federal bracket</strong> — with a CPA-signed strategy and
-              documentation that holds up.
+              payroll for real work instead — many families keep{' '}
+              <strong>thousands every year</strong>, with a CPA-signed strategy and documentation
+              that holds up.
             </p>
             <div className="hero-ctas" style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
               <a href="#estimate" className="btn btn-primary">
@@ -48,26 +47,8 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="hero-token">
-            <TokenCoin />
-          </div>
-        </div>
-      </section>
-
-      {/* STORY BAND */}
-      <section className="story-band">
-        <div className="container">
-          <div className="inner">
-            <TokenCoin />
-            <div>
-              <span className="kicker" style={{ color: 'var(--gold)', marginBottom: 4 }}>
-                {STORY_BAND.kicker}
-              </span>
-              <h3>{STORY_BAND.title}</h3>
-              <p>
-                {STORY_BAND.text} <a href={STORY_BAND.link.href}>{STORY_BAND.link.label} →</a>
-              </p>
-            </div>
+          <div className="hero-photo">
+            <img src={HERO.image.src} alt={HERO.image.alt} />
           </div>
         </div>
       </section>
@@ -151,7 +132,6 @@ export default function Home() {
           <SectionHead center kicker={WHAT_YOU_GET.kicker} headline={WHAT_YOU_GET.headline} sub={WHAT_YOU_GET.sub} />
           <div className="offer-card">
             <div className="offer-lead">
-              <TokenCoin />
               <div>
                 <h3>{WHAT_YOU_GET.leadItem.title}</h3>
                 <p>{WHAT_YOU_GET.leadItem.text}</p>
@@ -169,8 +149,8 @@ export default function Home() {
               ))}
             </div>
             <div className="guarantee" style={{ marginBottom: 0 }}>
-              <h4>🛡️ {WHAT_YOU_GET.guarantee.title}</h4>
-              <p>{WHAT_YOU_GET.guarantee.text}</p>
+              <h4>🤝 {WHAT_YOU_GET.support.title}</h4>
+              <p>{WHAT_YOU_GET.support.text}</p>
             </div>
             <div className="offer-cta">
               <a className="btn btn-primary btn-block" href={buyUrl} onClick={onBuy}>

@@ -59,7 +59,7 @@ The kit exists to make the boring parts automatic: a defensible wage calculated 
 wage data for your state and county, job descriptions, time logs, and a CPA's
 signature on the strategy.
 
-$97. One time. Money-back guarantee.
+$97. One time. About 15 minutes of your time — free email support included.
 
 → [Do it the right way](https://app.paprikatax.com/pay-now)
 
@@ -113,7 +113,7 @@ proof-of-work records, plus an hour of audit support from the firm, included.
 age-appropriate work. Modeling for product photos is the classic example.
 
 **"What if it doesn't save me money?"** Sometimes a compliant approach doesn't —
-we'll tell you if that's you, and there's a money-back guarantee.
+we'll tell you if that's you, and point you to other strategies that might fit instead.
 
 **"Is this a subscription?"** No. $97 once.
 
@@ -136,8 +136,9 @@ Your estimate was **~{{estimatedSavings}} per year**. Wages only count for the y
 they're actually paid — this isn't retroactive. Set it up now and the savings apply
 to this tax year; wait until January and this year's slice is gone.
 
-The kit takes minutes to start, you can loop in your spouse or advisor, and if it
-turns out not to fit your situation, you get your $97 back.
+The kit takes about 15 minutes to start, you can loop in your spouse or advisor,
+and real humans at the firm answer your questions — free email support is included,
+and a live CPA session is there if you want one.
 
 Keep the beard. Carry the token.
 

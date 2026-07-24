@@ -1,21 +1,16 @@
-// Home (Business Owners) — carries the structure of the current homepage,
-// rebuilt in the beard-token design framework.
+// Home (Business Owners) — carries the structure of the original homepage,
+// rebuilt in the PaprikaTax design framework. (Campaign-story theming lives
+// only in landing pages, e.g. src/content/landingBeardTax.js.)
 
 export const HERO = {
   eyebrow: 'For business-owner parents',
   headline: 'Hire your kids. Lower your taxes. Do it right.',
-  sub: 'You already support your kids with dollars the IRS taxed first. Put them on real payroll for real work, and the first $16,100 each of them earns can land in their 0% federal bracket — with a CPA-signed strategy and documentation that holds up.',
+  sub: 'You already support your kids with dollars the IRS taxed first. Put them on real payroll for real work instead — many families keep thousands every year, with a CPA-signed strategy and documentation that holds up.',
   primary: 'Estimate Savings',
   secondary: 'Buy Now — $97',
-  micro: 'Free 60-second estimate · CPA-backed · Money-back guarantee',
-  trustChips: ['Built by a 25-year CPA firm', 'Signed CPA Opinion Letter', '1 audit-support hour included'],
-}
-
-export const STORY_BAND = {
-  kicker: 'Why the beard token?',
-  title: 'In 1698, Peter the Great taxed beards.',
-  text: 'Keep the beard? Pay the tax — and carry a copper token proving you did. Three centuries later the lesson stands: the people who understand the rules, and can prove they followed them, keep more of what’s theirs. That token is our reminder of why documentation matters.',
-  link: { label: 'Read the story', href: 'https://paprikatax.com/peter-the-great-taxed-beards/' },
+  micro: 'Free 60-second estimate · 15-minute setup · Real CPA support',
+  trustChips: ['Built by a 25-year CPA firm', '15-minute intake', 'Free email + live CPA support'],
+  image: { src: '/assets/family-hero.jpg', alt: 'A business-owner parent working with her child' },
 }
 
 export const FAMILY_TAX = {
@@ -37,7 +32,7 @@ export const FAMILY_TAX = {
     steps: [
       'Your kids do real work in the business',
       'Their wages are a business deduction',
-      'The first $16,100 each is federal-tax-free (2026 standard deduction)',
+      'Their earnings start in the 0% federal bracket — and stay low far beyond it',
       'Money lands in their account — savings, Roth IRA, college',
     ],
     result: 'Same support for your family. Legitimately smaller tax bill. Kids who know what work is.',
@@ -93,13 +88,13 @@ export const WHAT_YOU_GET = {
   headline: 'Everything you need to do this the right way',
   sub: 'For $97, once. Built by the CPA firm accountants themselves use for defensible compensation.',
   leadItem: {
-    title: 'A signed CPA Opinion Letter — your token',
-    text: 'A licensed CPA runs your numbers and signs off on your wage strategy. If the IRS ever knocks, you’re not explaining a theory. You’re handing over a letter.',
+    title: 'Your highest defensible wage — done for you in 15 minutes',
+    text: 'Tell us about your business and your kids. A licensed CPA runs the numbers and sends back your complete strategy, typically by the next business day.',
   },
   items: [
     {
-      title: 'Your defensible wage, calculated',
-      text: 'CPA-calculated hourly rate for your child’s actual role, using wage data for your state and county — from 800+ real roles.',
+      title: 'A signed CPA Opinion Letter',
+      text: 'If the IRS ever asks, you’re not explaining a theory — you’re handing over a letter from a licensed CPA firm.',
     },
     {
       title: 'Labor-law & workers’ comp checks',
@@ -126,9 +121,9 @@ export const WHAT_YOU_GET = {
       text: 'What to do with the wages — Roth IRAs for dependents, education funding, and strategies that stack.',
     },
   ],
-  guarantee: {
-    title: 'Money-back guarantee',
-    text: 'If the kit doesn’t work for your situation, email us and we’ll refund it. If a compliant approach wouldn’t actually save you money, we’ll tell you that too.',
+  support: {
+    title: 'Easy — and you’re never on your own',
+    text: 'About 15 minutes of intake, then we do the heavy lifting. Free email support is included, and a live CPA session is available whenever you want a human ($97 credits toward it).',
   },
   cta: 'Get started — $97',
   ctaMicro: 'One-time payment · No subscription · Secured by Stripe',
@@ -159,7 +154,7 @@ export const PROCESS = {
 
 export const TESTIMONIALS = {
   kicker: 'Word of mouth',
-  headline: 'Parents who carry the token',
+  headline: 'What business-owner parents say',
   items: [
     {
       quote:
@@ -200,7 +195,7 @@ export const FAQ_TEASER = {
     },
     {
       q: 'What if this doesn’t save me money?',
-      a: 'Honest answer: in some cases a compliant approach may not reduce your total tax — and we’ll tell you if that’s you, plus what other strategies might fit. There’s a money-back guarantee if the kit isn’t useful for your situation.',
+      a: 'Honest answer: in some cases a compliant approach may not reduce your total tax — and we’ll tell you if that’s you, plus what other tax strategies might fit your family instead. That judgment call is exactly what you’re paying a real CPA firm for.',
     },
   ],
   link: { label: 'Read all FAQs', to: '/faqs' },

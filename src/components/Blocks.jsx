@@ -1,17 +1,13 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import TokenCoin from './TokenCoin'
 import { LINKS, PRICE, VIMEO_EXPLAINER_ID } from '../config'
 import { CTA_BAND } from '../content/global'
 import { checkoutUrl, track } from '../lib/tracking'
 
-// ----- interior page hero with token watermark -----
+// ----- interior page hero -----
 export function PageHero({ eyebrow, headline, sub, children }) {
   return (
     <section className="page-hero">
-      <div className="watermark" aria-hidden="true">
-        <TokenCoin />
-      </div>
       <div className="container">
         {eyebrow && <div className="eyebrow">{eyebrow}</div>}
         <h1>{headline}</h1>

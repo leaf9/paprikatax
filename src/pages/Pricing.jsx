@@ -3,7 +3,7 @@ import { PageHero, SectionHead, CtaBand, FaqList } from '../components/Blocks'
 import { usePageMeta } from '../lib/meta'
 import { LINKS } from '../config'
 import { checkoutUrl, track } from '../lib/tracking'
-import { HERO, TIERS, ANCHOR, GUARANTEE, ADVISOR_NOTE, FAQ } from '../content/pricing'
+import { HERO, TIERS, ANCHOR, SUPPORT, ADVISOR_NOTE, FAQ } from '../content/pricing'
 
 export default function Pricing() {
   usePageMeta(
@@ -55,8 +55,8 @@ export default function Pricing() {
           </div>
 
           <div className="guarantee" style={{ maxWidth: 880, margin: '16px auto 0' }}>
-            <h4>🛡️ {GUARANTEE.title}</h4>
-            <p>{GUARANTEE.text}</p>
+            <h4>🤝 {SUPPORT.title}</h4>
+            <p>{SUPPORT.text}</p>
           </div>
 
           <div className="note-band" style={{ maxWidth: 880, margin: '16px auto 0' }}>

@@ -6,14 +6,33 @@ import { checkoutUrl, track } from '../lib/tracking'
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
 
   useEffect(() => setOpen(false), [location.pathname])
 
+  // Collapse the full-width bar into a floating pill once the page scrolls.
+  useEffect(() => {
+    let raf = 0
+    const onScroll = () => {
+      if (raf) return
+      raf = requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 24)
+        raf = 0
+      })
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (raf) cancelAnimationFrame(raf)
+    }
+  }, [])
+
   const onBuy = () => track('InitiateCheckout', { value: 97, currency: 'USD' })
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${scrolled && !open ? 'pilled' : ''}`}>
       <div className="container">
         <div className="bar">
           <Link to="/" className="logo" aria-label="PaprikaTax home">

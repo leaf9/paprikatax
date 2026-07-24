@@ -84,8 +84,12 @@ _Updated 2026-07-24: the repo now contains the full site redesign; the landing p
 5. **Change campaign objective**: duplicate the ad set into an OUTCOME_LEADS campaign
    optimizing for the pixel `Lead` event (link-click optimization attracts clickers, not
    buyers). Once ~50 purchases/mo exist, test a Purchase-optimized campaign.
-6. Create retargeting audiences: pixel Lead (30/90d) minus Purchase; serve proof/guarantee
+6. Create retargeting audiences: pixel Lead (30/90d) minus Purchase; serve proof/ease
    creative to warm leads.
+   **Note (2026-07-24, client Loom):** client does NOT want a money-back guarantee
+   advertised, wants no standard-deduction dollar figure in marketing copy (anchors
+   people low), and wants "easy + 15 minutes + free email/live support" messaging
+   prominent. Their live pricing page still lists the guarantee — flag for consistency.
 7. Swap testimonials for verified, full-name versions when available (FTC hygiene).
 
 ## KPI targets (cold Meta traffic, mobile)

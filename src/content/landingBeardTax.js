@@ -7,14 +7,19 @@
 export const HERO = {
   eyebrow: 'For business-owner parents',
   headline: 'You’re already paying your kids. You’re just doing it the expensive way.',
-  sub: 'Allowance. Phones. Clothes. Activities. All paid with dollars the IRS taxed first. Put your kids on real payroll for real work, and the first $16,100 each of them earns can land in their 0% federal bracket — with documentation that holds up.',
+  sub: 'Allowance. Phones. Clothes. Activities. All paid with dollars the IRS taxed first. Put your kids on real payroll for real work instead — many families keep thousands every year, with documentation that holds up.',
   cta: 'See what your family could keep',
+  ctaBuy: 'Buy Now — $97',
   ctaMicro: 'Free estimate · about 60 seconds · from a licensed CPA firm',
-  trustChips: ['Built by a 25-year CPA', 'Signed CPA Opinion Letter', 'Money-back guarantee'],
+  trustChips: ['Built by a 25-year CPA firm', '15-minute intake', 'Free email support · Live CPA available'],
 }
 
 export const STORY = {
   kicker: 'The beard tax, continued',
+  watch: {
+    label: '▶ Watch the full story (2 min)',
+    href: 'https://www.facebook.com/120208084445540491/videos/1054347057171724/',
+  },
   beats: [
     {
       year: '1698',
@@ -52,7 +57,7 @@ export const FAMILY_TAX = {
     steps: [
       'Your kids do real work in the business',
       'Their wages are a business deduction',
-      'The first $16,100 each is federal-tax-free (2026 standard deduction)',
+      'Their earnings start in the 0% federal bracket — and stay low far beyond it',
       'Money lands in their account — savings, Roth IRA, college',
     ],
     result: 'Same support for your family. Legitimately smaller tax bill. Kids who know what work is.',
@@ -60,7 +65,7 @@ export const FAMILY_TAX = {
   exampleLine:
     'Example: $12,000 in wages to one teenager ≈ $3,840 kept per year at a 32% marginal rate. Every year you run it.',
   disclaimer:
-    'Exact savings depend on your entity type, state, and payroll taxes — that’s what the kit calculates for you.',
+    'Exact savings depend on your entity type, state, and payroll taxes — that’s what the kit calculates for you. Most families underpay: the kit finds the defensible maximum, not the timid minimum.',
 }
 
 export const EXAMPLES = {
@@ -114,12 +119,12 @@ export const OFFER = {
   headline: 'Keep the beard. Carry the token.',
   sub: 'Everything you need to hire your kids the right way — built by the CPA firm accountants themselves use for defensible compensation.',
   leadItem: {
-    title: 'A signed CPA Opinion Letter — your token',
-    text: 'A licensed CPA runs your numbers and signs off on your wage strategy. If the IRS ever knocks, you’re not explaining a theory. You’re handing over a letter.',
+    title: 'Your highest defensible wage — done for you in 15 minutes',
+    text: 'Tell us about your business and your kids. A licensed CPA runs the numbers and sends back your complete strategy — including the signed Opinion Letter that proves you did it right. That letter is your token.',
   },
   items: [
     {
-      title: 'Your defensible wage, calculated',
+      title: 'The maximum defensible rate, not the timid one',
       text: 'CPA-calculated hourly rate for your child’s actual role, using wage data for your state and county — from 800+ real roles.',
     },
     {
@@ -139,8 +144,8 @@ export const OFFER = {
       text: 'A custom walkthrough explaining your strategy in plain English — share it with your spouse or your tax preparer.',
     },
     {
-      title: 'Email support + one audit-support hour',
-      text: 'Real help from the firm if you get stuck — including an hour of audit support if you ever need it.',
+      title: 'Free email support + one audit-support hour',
+      text: 'Real humans from the firm answer your questions — and an hour of audit support is included if you ever need it.',
     },
     {
       title: 'Bonus: family wealth playbooks',
@@ -149,9 +154,9 @@ export const OFFER = {
   ],
   anchor:
     'A bespoke reasonable-compensation opinion from a CPA typically runs $1,500+. Doing nothing costs the average business-owner family four figures a year. The kit is $97. Once.',
-  guarantee: {
-    title: 'Money-back guarantee',
-    text: 'If the kit doesn’t work for your situation, email us and we’ll refund it. And if a compliant approach wouldn’t actually save you money, we’ll tell you that too — that’s the point of working with a real CPA firm.',
+  support: {
+    title: 'Easy — and you’re never on your own',
+    text: 'About 15 minutes of intake, then we do the heavy lifting. Free email support is included, and a live CPA session is available whenever you want a human ($97 credits toward it).',
   },
   upgrade: 'Want a human? Add a private 30-minute CPA call for $247 total — your $97 credits toward it.',
   cta: 'Get the Paprika Kit — $97',
@@ -222,7 +227,7 @@ export const FAQ = {
     },
     {
       q: 'What if it doesn’t save me money?',
-      a: 'Honest answer: in some situations, a compliant approach may not reduce your total tax — and we’ll tell you if that’s you, plus what other strategies might fit. And there’s a money-back guarantee if the kit isn’t useful for your situation.',
+      a: 'Honest answer: in some situations, a compliant approach may not reduce your total tax — and we’ll tell you if that’s you, plus what other tax strategies might fit your family instead. That judgment call is exactly what you’re paying a real CPA firm for.',
     },
     {
       q: 'Is it a subscription?',
