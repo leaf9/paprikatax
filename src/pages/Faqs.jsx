@@ -15,7 +15,7 @@ export default function Faqs() {
       {GROUPS.map((group, i) => (
         <section className="section" style={i % 2 ? { background: 'var(--cream-2)' } : undefined} key={group.title}>
           <div className="container">
-            <SectionHead headline={group.title} />
+            <SectionHead center headline={group.title} />
             <FaqList items={group.items} />
           </div>
         </section>
