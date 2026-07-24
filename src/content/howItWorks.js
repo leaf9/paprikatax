@@ -69,6 +69,17 @@ export const VIDEO = {
   sub: 'The rules, the opportunity, and where people get sloppy — from the CPA who built the system.',
 }
 
+export const PHOTOS = [
+  {
+    src: '/assets/family-boutique.jpg',
+    alt: 'A teenage daughter photographing products for social media while her mom arranges the family boutique',
+  },
+  {
+    src: '/assets/family-cafe.jpg',
+    alt: 'A father and teenage son reviewing the posting schedule on a laptop in the family café',
+  },
+]
+
 export const COLLAB = {
   kicker: 'Built for real families',
   headline: 'Start now, finish whenever',

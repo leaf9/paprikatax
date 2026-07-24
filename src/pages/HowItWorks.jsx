@@ -1,6 +1,6 @@
 import { PageHero, SectionHead, CtaBand, Steps, Features, VideoEmbed } from '../components/Blocks'
 import { usePageMeta } from '../lib/meta'
-import { HERO, STEPS, SYSTEM, VIDEO, COLLAB } from '../content/howItWorks'
+import { HERO, STEPS, SYSTEM, VIDEO, COLLAB, PHOTOS } from '../content/howItWorks'
 
 export default function HowItWorks() {
   usePageMeta(
@@ -16,6 +16,11 @@ export default function HowItWorks() {
         <div className="container">
           <SectionHead kicker={STEPS.kicker} headline={STEPS.headline} />
           <Steps steps={STEPS.steps} />
+          <div className="photo-band two" style={{ marginTop: 18 }}>
+            {PHOTOS.map((p) => (
+              <img key={p.src} src={p.src} alt={p.alt} loading="lazy" />
+            ))}
+          </div>
         </div>
       </section>
 

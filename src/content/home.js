@@ -10,7 +10,30 @@ export const HERO = {
   secondary: 'Buy Now — $97',
   micro: 'Free 60-second estimate · 15-minute setup · Real CPA support',
   trustChips: ['Built by a 25-year CPA firm', '15-minute intake', 'Free email + live CPA support'],
-  image: { src: '/assets/family-hero.jpg', alt: 'A business-owner parent working with her child' },
+  image: {
+    src: '/assets/family-packing.jpg',
+    alt: 'Parents and their daughter packing online orders together in the family stockroom',
+  },
+}
+
+export const FAMILY_BAND = {
+  kicker: 'Families like yours',
+  headline: 'Real work looks different in every family.',
+  sub: 'A workbench, a kitchen table, a warehouse aisle — wherever your business happens, there’s legitimate work your kids can own.',
+  photos: [
+    {
+      src: '/assets/family-woodshop.jpg',
+      alt: 'A father and his young son sorting hardware together in the family woodworking shop',
+    },
+    {
+      src: '/assets/family-kitchen.jpg',
+      alt: 'A father and his two kids assembling product boxes at the kitchen table',
+    },
+    {
+      src: '/assets/family-warehouse.jpg',
+      alt: 'Parents reviewing inventory on a tablet with their young-adult daughter in the family warehouse',
+    },
+  ],
 }
 
 export const FAMILY_TAX = {

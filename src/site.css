@@ -246,6 +246,27 @@
   .hero-photo { order: 2; }
 }
 
+/* ----- family photo bands ----- */
+.photo-band {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 700px) {
+  .photo-band { grid-template-columns: repeat(3, 1fr); }
+  .photo-band.two { grid-template-columns: repeat(2, 1fr); }
+}
+
+.photo-band img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+}
+
 /* ----- story band (home) ----- */
 .story-band {
   background: var(--ink);

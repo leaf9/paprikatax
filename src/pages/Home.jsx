@@ -6,7 +6,7 @@ import { usePageMeta } from '../lib/meta'
 import { LINKS, PRICE } from '../config'
 import { checkoutUrl, track } from '../lib/tracking'
 import {
-  HERO, FAMILY_TAX, VIDEO, EXAMPLES, WHAT_YOU_GET, PROCESS, TESTIMONIALS, FAQ_TEASER,
+  HERO, FAMILY_BAND, FAMILY_TAX, VIDEO, EXAMPLES, WHAT_YOU_GET, PROCESS, TESTIMONIALS, FAQ_TEASER,
 } from '../content/home'
 
 export default function Home() {
@@ -183,8 +183,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ TEASER */}
+      {/* FAMILY PHOTO BAND */}
       <section className="section">
+        <div className="container">
+          <SectionHead kicker={FAMILY_BAND.kicker} headline={FAMILY_BAND.headline} sub={FAMILY_BAND.sub} />
+          <div className="photo-band">
+            {FAMILY_BAND.photos.map((p) => (
+              <img key={p.src} src={p.src} alt={p.alt} loading="lazy" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ TEASER */}
+      <section className="section" style={{ background: 'var(--cream-2)' }}>
         <div className="container">
           <SectionHead center kicker={FAQ_TEASER.kicker} headline={FAQ_TEASER.headline} />
           <FaqList items={FAQ_TEASER.items} />
