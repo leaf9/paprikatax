@@ -1,6 +1,7 @@
 // About — the story, the firm, the team.
 
 export const HERO = {
+  bg: '/assets/family-boutique.jpg',
   eyebrow: 'About PaprikaTax',
   headline: 'Helping families make confident tax decisions.',
   sub: 'A licensed CPA firm, a family story, and a strategy named for home.',

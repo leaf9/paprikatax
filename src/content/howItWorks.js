@@ -1,6 +1,7 @@
 // How It Works — the process deep-dive page.
 
 export const HERO = {
+  bg: '/assets/family-woodshop.jpg',
   eyebrow: 'How it works',
   headline: 'Keep it in the family. Build skills. Save money.',
   sub: 'The Paprika strategy shifts income you already spend on your kids into their lower tax bracket — through real work, at a defensible wage, with the paperwork to prove it.',

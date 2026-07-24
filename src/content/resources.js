@@ -2,6 +2,7 @@
 // blog; cards link to those URLs until content is migrated.
 
 export const HERO = {
+  bg: '/assets/family-cafe.jpg',
   eyebrow: 'Resources & articles',
   headline: 'Good decisions come from good information.',
   sub: 'Guides, compliance answers, and short videos from the CPA firm behind PaprikaTax.',

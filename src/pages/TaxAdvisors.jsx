@@ -15,7 +15,7 @@ export default function TaxAdvisors() {
 
   return (
     <>
-      <PageHero eyebrow={HERO.eyebrow} headline={HERO.headline} sub={HERO.sub}>
+      <PageHero bg={HERO.bg} eyebrow={HERO.eyebrow} headline={HERO.headline} sub={HERO.sub}>
         <div className="hero-actions">
           <a className="btn btn-primary" href={LINKS.advisorSignup} onClick={onSignup}>
             {HERO.primary}

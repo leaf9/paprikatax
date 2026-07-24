@@ -21,9 +21,12 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="hero" style={{ padding: 'clamp(56px, 9vw, 110px) 0' }}>
-        <div className="container hero-grid">
-          <div>
+      <section className="hero" style={{ padding: 'clamp(64px, 10vw, 130px) 0' }}>
+        <div className="hero-bg" aria-hidden="true">
+          <img src={HERO.background.src} alt="" loading="eager" />
+        </div>
+        <div className="container">
+          <div style={{ maxWidth: 640 }}>
             <div className="eyebrow">{HERO.eyebrow}</div>
             <h1>{HERO.headline}</h1>
             <p className="sub">
@@ -46,9 +49,6 @@ export default function Home() {
                 <span key={chip}>{chip}</span>
               ))}
             </div>
-          </div>
-          <div className="hero-photo">
-            <img src={HERO.image.src} alt={HERO.image.alt} />
           </div>
         </div>
       </section>

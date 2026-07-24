@@ -11,7 +11,7 @@ export default function About() {
 
   return (
     <>
-      <PageHero eyebrow={HERO.eyebrow} headline={HERO.headline} sub={HERO.sub} />
+      <PageHero bg={HERO.bg} eyebrow={HERO.eyebrow} headline={HERO.headline} sub={HERO.sub} />
 
       {/* STORY */}
       <section className="section founder" style={{ background: 'var(--cream)' }}>

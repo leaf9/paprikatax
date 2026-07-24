@@ -18,7 +18,7 @@ export default function Pricing() {
 
   return (
     <>
-      <PageHero eyebrow={HERO.eyebrow} headline={HERO.headline} sub={HERO.sub} />
+      <PageHero bg={HERO.bg} eyebrow={HERO.eyebrow} headline={HERO.headline} sub={HERO.sub} />
 
       <section className="section">
         <div className="container">

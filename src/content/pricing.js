@@ -1,6 +1,7 @@
 // Pricing — the two tiers, guarantee, and pricing FAQs.
 
 export const HERO = {
+  bg: '/assets/family-hero-bg.jpg',
   eyebrow: 'Pricing',
   headline: 'One price. No subscription. Yours to keep.',
   sub: 'Start with the $97 kit. Add live CPA time only if you want it — and your $97 credits toward it.',

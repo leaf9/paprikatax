@@ -4,10 +4,15 @@ import { LINKS, PRICE, VIMEO_EXPLAINER_ID } from '../config'
 import { CTA_BAND } from '../content/global'
 import { checkoutUrl, track } from '../lib/tracking'
 
-// ----- interior page hero -----
-export function PageHero({ eyebrow, headline, sub, children }) {
+// ----- interior page hero (optional faded family-photo background) -----
+export function PageHero({ eyebrow, headline, sub, bg, children }) {
   return (
     <section className="page-hero">
+      {bg && (
+        <div className="hero-bg" aria-hidden="true">
+          <img src={bg} alt="" loading="eager" />
+        </div>
+      )}
       <div className="container">
         {eyebrow && <div className="eyebrow">{eyebrow}</div>}
         <h1>{headline}</h1>

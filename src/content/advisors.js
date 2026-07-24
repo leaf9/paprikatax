@@ -1,6 +1,7 @@
 // Tax Advisors — B2B page.
 
 export const HERO = {
+  bg: '/assets/family-warehouse.jpg',
   eyebrow: 'For tax & financial advisors',
   headline: 'Audit-ready workpapers for hiring dependents.',
   sub: 'Protect your clients and maximize their tax savings — wage calculations, labor-law checks, and third-party CPA-signed workpapers that slot into the planning you already do.',

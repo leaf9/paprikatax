@@ -1,6 +1,7 @@
 // FAQs — the full set from the current site, deduplicated and grouped.
 
 export const HERO = {
+  bg: '/assets/family-kitchen.jpg',
   eyebrow: 'FAQs',
   headline: 'Common questions about the Paprika strategy',
   sub: 'Straight answers from a licensed CPA firm. Can’t find yours? Email support@paprikatax.com.',

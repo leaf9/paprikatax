@@ -10,10 +10,7 @@ export const HERO = {
   secondary: 'Buy Now — $97',
   micro: 'Free 60-second estimate · 15-minute setup · Real CPA support',
   trustChips: ['Built by a 25-year CPA firm', '15-minute intake', 'Free email + live CPA support'],
-  image: {
-    src: '/assets/family-packing.jpg',
-    alt: 'Parents and their daughter packing online orders together in the family stockroom',
-  },
+  background: { src: '/assets/family-hero-bg.jpg' },
 }
 
 export const FAMILY_BAND = {

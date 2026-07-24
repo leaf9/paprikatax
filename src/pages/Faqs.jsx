@@ -10,7 +10,7 @@ export default function Faqs() {
 
   return (
     <>
-      <PageHero eyebrow={HERO.eyebrow} headline={HERO.headline} sub={HERO.sub} />
+      <PageHero bg={HERO.bg} eyebrow={HERO.eyebrow} headline={HERO.headline} sub={HERO.sub} />
 
       {GROUPS.map((group, i) => (
         <section className="section" style={i % 2 ? { background: 'var(--cream-2)' } : undefined} key={group.title}>

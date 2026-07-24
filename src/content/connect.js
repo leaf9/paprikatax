@@ -1,6 +1,7 @@
 // Connect — contact channels + message form.
 
 export const HERO = {
+  bg: '/assets/family-hero-bg.jpg',
   eyebrow: 'Connect',
   headline: 'We’re happy to answer your questions.',
   sub: 'Real people at a real firm — replies within one business day.',
