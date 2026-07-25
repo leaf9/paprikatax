@@ -67,7 +67,9 @@ back to `Estimator` and on-page lead capture returns.
   client's site, unverified/first-name-only — replace with verified versions.
 - Founder-story copy rule: honor Dave's dad as the hard worker; the gap is the
   system's, never his failure (client feedback, see memory).
-- GitHub repo not yet created (needs Ben's confirmation of name/visibility).
+- GitHub: https://github.com/leaf9/paprikatax (public, per Ben 2026-07-25). Repo is
+  PUBLIC — keep client-sensitive material (ad performance beyond what's already in
+  docs/, credentials, client communications) out of the repo.
 - Vimeo explainer: `1157643090` (click-to-load facade, no third-party JS until play).
 
 ## Docs
