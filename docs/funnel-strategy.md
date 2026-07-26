@@ -14,8 +14,22 @@ _Last updated: 2026-07-23_
 
 ~$3,000 spend, ~8,150 clicks, ≈1 purchase. **Traffic is 99% mobile.**
 
-The creative is excellent (7–11% CTR at $0.10–0.21 CPC is elite for cold traffic).
-The problem was the destination:
+> ⚠️ **SUPERSEDED 2026-07-26 — read `docs/diagnosis-and-path.md` first.**
+> The conclusion below ("the creative is excellent, the problem was the destination") was drawn
+> from click-level metrics only and is **substantially wrong**. Deeper analysis of landing-page-view,
+> age, placement, and pixel-event data showed:
+> - Only **4,362 of the 8,825 "clicks" (49%) ever became a landing page view** — those CTRs were
+>   heavily post-engagement clicks, not traffic. The 11% Sales-Campaign CTR was ~78% non-link clicks.
+> - **54% of consumer traffic was aged 55+ (36% was 65+)** — people with no working-age dependents,
+>   bought because `LINK_CLICKS` optimization favors the highest-CTR age brackets.
+> - **The pixel has no `Purchase` event at all**, so the Sales-objective campaigns were optimizing
+>   toward a conversion that does not exist, and no sale can be attributed.
+> - Audience Network supplied 63% of one campaign's landing page views.
+>
+> The destination problems below are all real and worth fixing — but they were the *second* order
+> issue, not the first. Corrected diagnosis and the 30-day plan: `docs/diagnosis-and-path.md`.
+
+The destination problems (still valid, second-order):
 
 1. **Story discontinuity** — the ad is a narrative (Peter the Great → beard token →
    documentation); the homepage opened with a generic question and never mentioned it.

@@ -24,26 +24,35 @@
       })(window, document, 'script', 'dataLayer', 'GTM-P58K4T2L')
     </script>
 
-    <!-- Meta Pixel (same pixel as current site) -->
+    <!-- Meta Pixel (same pixel as current site).
+         Guarded: localhost/preview traffic must NEVER pollute the client's
+         production dataset. Only real hostnames initialize the pixel. -->
     <script>
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return
-        n = f.fbq = function () {
-          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-        }
-        if (!f._fbq) f._fbq = n
-        n.push = n
-        n.loaded = !0
-        n.version = '2.0'
-        n.queue = []
-        t = b.createElement(e)
-        t.async = !0
-        t.src = v
-        s = b.getElementsByTagName(e)[0]
-        s.parentNode.insertBefore(t, s)
-      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js')
-      fbq('init', '1227262212899180')
-      fbq('track', 'PageView')
+      window.PT_PIXEL_ID = '1227262212899180'
+      window.PT_TRACKING_ENABLED = !/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) &&
+        !location.hostname.endsWith('.local') &&
+        !/netlify\.app$/.test(location.hostname)
+
+      if (window.PT_TRACKING_ENABLED) {
+        !(function (f, b, e, v, n, t, s) {
+          if (f.fbq) return
+          n = f.fbq = function () {
+            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+          }
+          if (!f._fbq) f._fbq = n
+          n.push = n
+          n.loaded = !0
+          n.version = '2.0'
+          n.queue = []
+          t = b.createElement(e)
+          t.async = !0
+          t.src = v
+          s = b.getElementsByTagName(e)[0]
+          s.parentNode.insertBefore(t, s)
+        })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js')
+        fbq('init', window.PT_PIXEL_ID)
+        fbq('track', 'PageView')
+      }
     </script>
   </head>
   <body>

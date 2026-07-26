@@ -58,6 +58,12 @@ const FBQ_STANDARD = new Set([
 ])
 
 export function track(event, data = {}) {
+  // index.html sets PT_TRACKING_ENABLED=false on localhost/preview hosts so dev
+  // testing never writes into the client's production pixel dataset.
+  if (window.PT_TRACKING_ENABLED === false) {
+    console.debug(`[tracking] suppressed on ${location.hostname}:`, event, data)
+    return
+  }
   try {
     if (typeof window.fbq === 'function') {
       window.fbq(FBQ_STANDARD.has(event) ? 'track' : 'trackCustom', event, data)
