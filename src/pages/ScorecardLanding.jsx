@@ -138,13 +138,13 @@ export default function ScorecardLanding() {
         </div>
       </header>
 
-      {/* HERO + FORM — Peter at the door as a subtle faded background */}
+      {/* HERO + FORM — Peter's knock visible on the right on desktop */}
       <section className="hero sc-hero" ref={heroRef}>
-        <div className="hero-bg" aria-hidden="true">
-          <img src={HERO.background.src} alt="" loading="eager" style={{ objectPosition: '78% 20%' }} />
+        <div className="hero-bg bg-reveal" aria-hidden="true">
+          <img src={HERO.background.src} alt="" loading="eager" style={{ objectPosition: 'right center' }} />
         </div>
         <div className="container">
-          <div style={{ maxWidth: 620 }}>
+          <div style={{ maxWidth: 680 }}>
             <div className="eyebrow">{HERO.eyebrow}</div>
             <h1>{HERO.headline}</h1>
             <p className="sub">{HERO.sub}</p>
@@ -160,6 +160,11 @@ export default function ScorecardLanding() {
           <div className="section-head" style={{ textAlign: 'center', margin: '0 auto', marginBottom: 'clamp(28px, 5vw, 48px)' }}>
             <span className="kicker">{CONTRAST.kicker}</span>
             <h2>{CONTRAST.headline}</h2>
+            <p style={{ marginTop: 18 }}>
+              <a className="btn btn-primary" href="#get" onClick={scrollToForm}>
+                {CONTRAST.headlineCta} →
+              </a>
+            </p>
           </div>
           <div className="sc-contrast">
             {CONTRAST.panels.map((p) => (
@@ -244,7 +249,7 @@ export default function ScorecardLanding() {
       {/* FINAL CTA — token as a subtle faded background */}
       <section className="section final sc-final">
         <div className="hero-bg bg-soft" aria-hidden="true">
-          <img src={FINAL_CTA.background.src} alt="" loading="lazy" />
+          <img src={FINAL_CTA.background.src} alt="" loading="lazy" style={{ objectPosition: 'center 40%' }} />
         </div>
         <div className="container">
           <h2>{FINAL_CTA.headline}</h2>

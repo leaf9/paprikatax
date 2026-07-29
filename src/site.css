@@ -626,6 +626,22 @@
   }
 }
 
+/* reveal variant: keep the text side dark but let the image's right side read */
+.hero-bg.bg-reveal::after {
+  background:
+    linear-gradient(100deg, rgba(41, 35, 28, 0.96) 32%, rgba(41, 35, 28, 0.7) 56%, rgba(41, 35, 28, 0.16) 88%),
+    linear-gradient(to top, rgba(41, 35, 28, 0.82), rgba(41, 35, 28, 0.08) 40%);
+}
+
+@media (max-width: 899px) {
+  /* on small screens the text spans the full width — restore the heavier fade */
+  .hero-bg.bg-reveal::after {
+    background:
+      linear-gradient(100deg, rgba(41, 35, 28, 0.96) 28%, rgba(41, 35, 28, 0.78) 60%, rgba(41, 35, 28, 0.5) 100%),
+      linear-gradient(to top, rgba(41, 35, 28, 0.88), rgba(41, 35, 28, 0.15) 45%);
+  }
+}
+
 /* softer uniform overlay for centered dark sections with a bg image */
 .sc-final { position: relative; overflow: hidden; }
 

@@ -14,9 +14,10 @@ export const HERO = {
   eyebrow: 'Free · for business-owner parents',
   headline: 'Hiring your kids can save thousands — if the paperwork holds up.',
   sub: 'Plenty of business owners pay their kids through the business; few keep the records that make it stick. When the taxman knocks — around here we call him Peter — the difference between keeping the savings and handing them back is a folder of paperwork. Already doing it or just considering it, you’ll know where you stand in 2 minutes.',
-  // Rendered as a subtle faded background, not a foreground panel.
+  // Rendered as a faded background; wide crop keeps Peter's knock visible
+  // on the right side of the hero on desktop.
   background: {
-    src: '/assets/story-knock.jpg',
+    src: '/assets/story-knock-wide.jpg',
     alt: '',
   },
 }
@@ -41,8 +42,9 @@ export const SUCCESS = {
 }
 
 export const CONTRAST = {
-  kicker: 'Same audit. Two endings.',
-  headline: 'The knock is not the problem. The folder is.',
+  kicker: 'Free 2-minute check',
+  headline: 'Know where your family payroll stands — before anyone asks.',
+  headlineCta: 'Check my score — free',
   panels: [
     {
       image: '/assets/story-audit-1698.jpg',
@@ -57,12 +59,12 @@ export const CONTRAST = {
       caption: 'Records ready. Peter checks the stack, finds everything, and leaves with nothing.',
     },
   ],
-  bridge: 'The scorecard tells you which Boris you’d be when the knock comes — and exactly what changes the ending.',
+  bridge: 'Your scorecard shows exactly what’s solid, what’s missing, and what to fix first.',
 }
 
 export const WHATS_INSIDE = {
-  kicker: 'What you get',
-  headline: 'Two tools, one email.',
+  kicker: 'Yours free',
+  headline: 'Here are the two free tools we’ll send you.',
   columns: [
     {
       icon: 'shield',
@@ -108,12 +110,12 @@ export const KIT = {
 }
 
 export const FINAL_CTA = {
-  headline: 'Keep the beard. Carry the token.',
-  sub: 'Two minutes now beats an awkward conversation later.',
+  headline: 'Keep more in the family — with proof in the folder.',
+  sub: 'Two minutes now, and you’ll know exactly where you stand. Peter can knock all he likes.',
   cta: 'Get my free scorecard',
   // Rendered as a subtle faded background behind the closing section.
   background: {
-    src: '/assets/story-token.jpg',
+    src: '/assets/story-token-wide.jpg',
   },
 }
 
