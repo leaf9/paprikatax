@@ -10,6 +10,7 @@ import Faqs from './pages/Faqs'
 import About from './pages/About'
 import Connect from './pages/Connect'
 import BeardTaxLanding from './pages/BeardTaxLanding'
+import ScorecardLanding from './pages/ScorecardLanding'
 import { track } from './lib/tracking'
 
 // Standard site chrome. Landing pages render OUTSIDE this layout so ad
@@ -57,6 +58,7 @@ export default function App() {
 
       {/* Ad landing pages — no site chrome. Add future campaign pages here. */}
       <Route path="/beard-tax" element={<BeardTaxLanding />} />
+      <Route path="/scorecard" element={<ScorecardLanding />} />
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

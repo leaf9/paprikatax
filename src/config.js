@@ -3,6 +3,7 @@
 export const LINKS = {
   checkout: 'https://app.paprikatax.com/pay-now',
   estimatorApp: 'https://app.paprikatax.com/savings-estimator',
+  scorecardApp: 'https://app.paprikatax.com/scorecard',
   advisorSignup: 'https://app.paprikatax.com/advisor-signup',
   quiz: 'https://app.paprikatax.com/quiz',
   bookLive: 'https://cal.com/paprikatax/30min-copy',

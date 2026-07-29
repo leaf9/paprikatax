@@ -79,10 +79,21 @@ export function track(event, data = {}) {
   }
 }
 
-// Submits the lead to Netlify Forms. Resolves true on success, false otherwise
-// (the UI shows results either way — capture must never block the visitor).
-export async function submitLead(fields) {
-  const body = new URLSearchParams({ 'form-name': 'savings-report-leads', ...fields })
+// Submits fields to a Netlify Form. Resolves true on success, false otherwise
+// (the UI proceeds either way — capture must never block the visitor).
+// The form name MUST match a hidden static form in index.html.
+export async function submitNetlifyForm(formName, fields) {
+  const attr = getAttribution()
+  const body = new URLSearchParams({
+    'form-name': formName,
+    utm_source: attr.utm_source || '',
+    utm_medium: attr.utm_medium || '',
+    utm_campaign: attr.utm_campaign || '',
+    utm_content: attr.utm_content || '',
+    fbclid: attr.fbclid || '',
+    landedAt: window.location.href,
+    ...fields,
+  })
   try {
     const res = await fetch('/', {
       method: 'POST',
@@ -91,7 +102,9 @@ export async function submitLead(fields) {
     })
     return res.ok
   } catch (err) {
-    console.warn('Lead submit failed (expected in local dev):', err)
+    console.warn(`Form "${formName}" submit failed (expected in local dev):`, err)
     return false
   }
 }
+
+export const submitLead = (fields) => submitNetlifyForm('savings-report-leads', fields)
