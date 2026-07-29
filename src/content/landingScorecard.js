@@ -14,6 +14,8 @@ export const HERO = {
   eyebrow: 'Free · for business-owner parents',
   headline: 'Hiring your kids can save thousands — if the paperwork holds up.',
   sub: 'Plenty of business owners pay their kids through the business; few keep the records that make it stick. When the taxman knocks — around here we call him Peter — the difference between keeping the savings and handing them back is a folder of paperwork. Already doing it or just considering it, you’ll know where you stand in 2 minutes.',
+  cta: 'Get my free scorecard',
+  ctaMicro: 'Free · takes about 2 minutes · from a licensed CPA firm',
   // Rendered as a faded background; wide crop keeps Peter's knock visible
   // on the right side of the hero on desktop.
   background: {
@@ -23,15 +25,22 @@ export const HERO = {
 }
 
 export const FORM = {
-  title: 'Get your free Risk Scorecard',
   bullets: ['Your family-payroll exposure score', 'Bonus: 100+ real jobs kids can legitimately do, by age'],
   firstName: 'First name',
   email: 'Email address',
-  submit: 'Send me the scorecard →',
-  micro: 'Free · takes about 2 minutes · from a licensed CPA firm',
-  privacy: 'No spam — your scorecard, your ideas list, and a few genuinely useful follow-ups. Unsubscribe anytime.',
   errorName: 'Add your first name so we know who’s asking.',
   errorEmail: 'That email doesn’t look right — mind checking it?',
+}
+
+// The opt-in modal — every CTA on the page opens this. Golden-ticket feel:
+// the token coin, gold framing, one gift to claim.
+export const MODAL = {
+  eyebrow: 'Free · takes 2 minutes',
+  title: 'Claim your Risk Scorecard',
+  sub: 'Plus the 100+ Job Ideas list — both free, delivered to your inbox.',
+  submit: 'Claim my free scorecard →',
+  micro: 'From a licensed CPA firm · no cost, no catch',
+  privacy: 'No spam — your scorecard, your ideas list, and a few genuinely useful follow-ups. Unsubscribe anytime.',
 }
 
 export const SUCCESS = {

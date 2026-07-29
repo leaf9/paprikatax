@@ -626,6 +626,190 @@
   }
 }
 
+/* hero bullets on the dark hero */
+.sc-bullets-dark { margin-bottom: 22px; }
+
+.sc-bullets-dark li { color: rgba(250, 245, 236, 0.85); font-size: 15px; }
+
+.sc-bullets-dark li::before { color: var(--gold); }
+
+/* ----- golden-ticket opt-in modal ----- */
+.optin-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(24, 19, 14, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: optin-fade 0.22s ease-out;
+  overflow-y: auto;
+}
+
+.optin-modal {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  text-align: center;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(217, 164, 65, 0.16), transparent 55%),
+    linear-gradient(165deg, #35291c, #241f19 60%);
+  border: 1px solid rgba(217, 164, 65, 0.6);
+  border-radius: 22px;
+  box-shadow:
+    0 0 0 5px rgba(217, 164, 65, 0.12),
+    0 32px 90px rgba(0, 0, 0, 0.55);
+  padding: clamp(26px, 5vw, 38px) clamp(20px, 4vw, 34px) clamp(20px, 4vw, 28px);
+  color: var(--cream);
+  animation: optin-pop 0.26s cubic-bezier(0.2, 0.9, 0.3, 1.15);
+  margin: auto 0;
+}
+
+/* fine inner frame — the certificate/ticket edge */
+.optin-modal::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(217, 164, 65, 0.28);
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+@keyframes optin-fade {
+  from { opacity: 0; }
+}
+
+@keyframes optin-pop {
+  from { opacity: 0; transform: translateY(14px) scale(0.96); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .optin-overlay, .optin-modal { animation: none; }
+}
+
+.optin-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  color: rgba(250, 245, 236, 0.55);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.optin-close:hover { color: var(--cream); }
+
+.optin-coin {
+  display: flex;
+  justify-content: center;
+  margin: -2px 0 10px;
+}
+
+.optin-coin svg {
+  width: 96px;
+  height: 96px;
+  transform: rotate(-8deg);
+  filter: drop-shadow(0 8px 26px rgba(217, 164, 65, 0.45));
+}
+
+.optin-eyebrow {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.optin-modal h3 {
+  font-family: var(--serif);
+  font-size: clamp(23px, 4vw, 28px);
+  font-weight: 650;
+  color: #f6ecd8;
+  margin-bottom: 8px;
+  text-wrap: balance;
+}
+
+.optin-sub {
+  font-size: 14.5px;
+  color: rgba(250, 245, 236, 0.78);
+  max-width: 34ch;
+  margin: 0 auto 20px;
+}
+
+.optin-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.optin-modal input {
+  font-family: var(--sans);
+  font-size: 16.5px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(217, 164, 65, 0.35);
+  background: #fffdf8;
+  color: var(--ink);
+  width: 100%;
+  text-align: center;
+}
+
+.optin-modal input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(217, 164, 65, 0.25);
+}
+
+.optin-err {
+  color: #f0b490;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+/* the golden button */
+.btn-gold {
+  background: linear-gradient(180deg, #eecd79, #cfa03a 55%, #b8862b);
+  color: #2b2113;
+  font-weight: 800;
+  border: 1px solid rgba(120, 84, 20, 0.55);
+  box-shadow:
+    0 10px 30px rgba(217, 164, 65, 0.4),
+    inset 0 1px 0 rgba(255, 244, 214, 0.8);
+  text-shadow: 0 1px 0 rgba(255, 246, 220, 0.45);
+}
+
+.btn-gold:hover {
+  background: linear-gradient(180deg, #f4d789, #d9ab45 55%, #c29032);
+}
+
+.optin-micro {
+  font-size: 12.5px;
+  color: rgba(250, 245, 236, 0.6);
+  margin-top: 12px;
+}
+
+.optin-privacy {
+  font-size: 11.5px;
+  color: rgba(250, 245, 236, 0.42);
+  margin-top: 8px;
+}
+
+.optin-modal .optin-sub + form { margin-top: 2px; }
+
+/* success state inherits the same stage */
+.optin-modal .btn-block { width: 100%; }
+
 /* reveal variant: keep the text side dark but let the image's right side read */
 .hero-bg.bg-reveal::after {
   background:

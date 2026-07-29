@@ -1,24 +1,27 @@
 import { useEffect, useRef, useState } from 'react'
+import TokenCoin from '../components/TokenCoin'
 import { LINKS, PRICE } from '../config'
 import {
-  HERO, FORM, SUCCESS, CONTRAST, WHATS_INSIDE, KIT, FINAL_CTA, FOOTER,
+  HERO, FORM, MODAL, SUCCESS, CONTRAST, WHATS_INSIDE, KIT, FINAL_CTA, FOOTER,
 } from '../content/landingScorecard'
 import { checkoutUrl, submitNetlifyForm, track, withAttribution } from '../lib/tracking'
 import { usePageMeta } from '../lib/meta'
 
 // Lead-capture landing page for the "Peter the Great" ad → free Risk Scorecard
-// + 100 ideas. Chrome-free (rendered outside SiteLayout). The scorecard itself
-// lives in the client's app; we capture the lead FIRST, then hand off with
+// + 100 ideas. Chrome-free (rendered outside SiteLayout). Every CTA opens the
+// golden-ticket opt-in modal, so visitors convert wherever they are on the
+// page. After capture, we hand off to the client's scorecard app with
 // name/email in the URL so his app can skip its own capture step.
-// Speaks to BOTH audiences: already paying their kids, and not yet started.
 export default function ScorecardLanding() {
   const [showSticky, setShowSticky] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
   const [status, setStatus] = useState('idle') // idle | sending | done
   const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
   const [honeypot, setHoneypot] = useState('')
   const [error, setError] = useState('')
   const heroRef = useRef(null)
+  const modalRef = useRef(null)
 
   usePageMeta(
     'Free Family Payroll Risk Scorecard',
@@ -29,18 +32,36 @@ export default function ScorecardLanding() {
   useEffect(() => {
     const hero = heroRef.current
     if (!hero || !('IntersectionObserver' in window)) return
-    const io = new IntersectionObserver(([entry]) => setShowSticky(!entry.isIntersecting && status !== 'done'), {
+    const io = new IntersectionObserver(([entry]) => setShowSticky(!entry.isIntersecting), {
       threshold: 0.1,
     })
     io.observe(hero)
     return () => io.disconnect()
-  }, [status])
+  }, [])
 
-  const scrollToForm = (e) => {
+  // Modal open/close: scroll lock, ESC to close, focus the first field.
+  useEffect(() => {
+    if (!modalOpen) return
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    const onKey = (e) => e.key === 'Escape' && setModalOpen(false)
+    window.addEventListener('keydown', onKey)
+    const t = setTimeout(() => {
+      modalRef.current?.querySelector('input[name="firstName"], a.btn')?.focus()
+    }, 60)
+    return () => {
+      document.body.style.overflow = prevOverflow
+      window.removeEventListener('keydown', onKey)
+      clearTimeout(t)
+    }
+  }, [modalOpen])
+
+  const openModal = (e) => {
     e?.preventDefault()
-    document.getElementById('get')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    document.querySelector('#get input[name="firstName"]')?.focus({ preventScroll: true })
+    setModalOpen(true)
+    track('OptinOpen', {})
   }
+  const closeModal = () => setModalOpen(false)
 
   // Hand-off to the client's scorecard app, attribution + contact attached so
   // his app can prefill and skip re-asking for the email.
@@ -67,64 +88,6 @@ export default function ScorecardLanding() {
 
   const onHandoff = () => track('ScorecardAppClick', {})
 
-  const formCard =
-    status === 'done' ? (
-      <div className="sc-card sc-success" id="get">
-        <h3>
-          {SUCCESS.title.replace('.', '')}
-          {firstName ? `, ${firstName.trim()}.` : '.'}
-        </h3>
-        <p>{SUCCESS.body}</p>
-        <a className="btn btn-primary btn-block" href={scorecardUrl()} onClick={onHandoff}>
-          {SUCCESS.cta}
-        </a>
-        <p className="micro">{SUCCESS.micro}</p>
-      </div>
-    ) : (
-      <div className="sc-card" id="get">
-        <h3>{FORM.title}</h3>
-        <ul className="sc-bullets">
-          {FORM.bullets.map((b) => (
-            <li key={b}>{b}</li>
-          ))}
-        </ul>
-        <form onSubmit={onSubmit} noValidate>
-          <input
-            type="text"
-            name="firstName"
-            placeholder={FORM.firstName}
-            autoComplete="given-name"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder={FORM.email}
-            autoComplete="email"
-            inputMode="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          {/* honeypot */}
-          <input
-            type="text"
-            name="company"
-            value={honeypot}
-            onChange={(e) => setHoneypot(e.target.value)}
-            style={{ display: 'none' }}
-            tabIndex={-1}
-            autoComplete="off"
-          />
-          {error && <div className="err">{error}</div>}
-          <button type="submit" className="btn btn-primary btn-block" disabled={status === 'sending'}>
-            {status === 'sending' ? 'One moment…' : FORM.submit}
-          </button>
-        </form>
-        <p className="micro" style={{ textAlign: 'center' }}>{FORM.micro}</p>
-      </div>
-    )
-
   return (
     <>
       <header className="topbar">
@@ -138,7 +101,7 @@ export default function ScorecardLanding() {
         </div>
       </header>
 
-      {/* HERO + FORM — Peter's knock visible on the right on desktop */}
+      {/* HERO — Peter's knock visible on the right on desktop */}
       <section className="hero sc-hero" ref={heroRef}>
         <div className="hero-bg bg-reveal" aria-hidden="true">
           <img src={HERO.background.src} alt="" loading="eager" style={{ objectPosition: 'right center' }} />
@@ -148,8 +111,17 @@ export default function ScorecardLanding() {
             <div className="eyebrow">{HERO.eyebrow}</div>
             <h1>{HERO.headline}</h1>
             <p className="sub">{HERO.sub}</p>
-            {formCard}
-            <p className="micro" style={{ marginTop: 12 }}>{FORM.privacy}</p>
+            <ul className="sc-bullets sc-bullets-dark">
+              {FORM.bullets.map((b) => (
+                <li key={b}>{b}</li>
+              ))}
+            </ul>
+            <div className="hero-ctas" style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
+              <button className="btn btn-primary" onClick={openModal}>
+                {HERO.cta} →
+              </button>
+            </div>
+            <p className="micro">{HERO.ctaMicro}</p>
           </div>
         </div>
       </section>
@@ -161,9 +133,9 @@ export default function ScorecardLanding() {
             <span className="kicker">{CONTRAST.kicker}</span>
             <h2>{CONTRAST.headline}</h2>
             <p style={{ marginTop: 18 }}>
-              <a className="btn btn-primary" href="#get" onClick={scrollToForm}>
+              <button className="btn btn-primary" onClick={openModal}>
                 {CONTRAST.headlineCta} →
-              </a>
+              </button>
             </p>
           </div>
           <div className="sc-contrast">
@@ -179,14 +151,14 @@ export default function ScorecardLanding() {
           </div>
           <p className="sc-bridge">{CONTRAST.bridge}</p>
           <p style={{ textAlign: 'center', marginTop: 18 }}>
-            <a className="btn btn-primary" href="#get" onClick={scrollToForm}>
+            <button className="btn btn-primary" onClick={openModal}>
               {FINAL_CTA.cta} →
-            </a>
+            </button>
           </p>
         </div>
       </section>
 
-      {/* WHAT'S INSIDE — two columns, icons, no photo */}
+      {/* WHAT'S INSIDE — two columns, icons */}
       <section className="section" style={{ background: 'var(--cream-2)' }}>
         <div className="container">
           <div className="section-head" style={{ textAlign: 'center', margin: '0 auto', marginBottom: 'clamp(28px, 5vw, 48px)' }}>
@@ -212,9 +184,9 @@ export default function ScorecardLanding() {
             ))}
           </div>
           <p style={{ textAlign: 'center', marginTop: 22 }}>
-            <a className="btn btn-primary" href="#get" onClick={scrollToForm}>
+            <button className="btn btn-primary" onClick={openModal}>
               {WHATS_INSIDE.cta} →
-            </a>
+            </button>
           </p>
         </div>
       </section>
@@ -255,9 +227,9 @@ export default function ScorecardLanding() {
           <h2>{FINAL_CTA.headline}</h2>
           <p className="sub">{FINAL_CTA.sub}</p>
           <div className="final-ctas">
-            <a href="#get" className="btn btn-primary" onClick={scrollToForm}>
+            <button className="btn btn-primary" onClick={openModal}>
               {FINAL_CTA.cta} →
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -277,15 +249,90 @@ export default function ScorecardLanding() {
       </footer>
 
       {/* STICKY BAR */}
-      <div className={`sticky-bar ${showSticky && status !== 'done' ? 'show' : ''}`}>
+      <div className={`sticky-bar ${showSticky && !modalOpen ? 'show' : ''}`}>
         <div className="label">
           Get the free Risk Scorecard
           <small>2 minutes · plus 100+ job ideas</small>
         </div>
-        <a href="#get" className="btn btn-primary" onClick={scrollToForm}>
+        <button className="btn btn-primary" onClick={openModal}>
           Find out →
-        </a>
+        </button>
       </div>
+
+      {/* GOLDEN-TICKET OPT-IN MODAL */}
+      {modalOpen && (
+        <div className="optin-overlay" onMouseDown={(e) => e.target === e.currentTarget && closeModal()}>
+          <div
+            className="optin-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="optin-title"
+            ref={modalRef}
+          >
+            <button className="optin-close" onClick={closeModal} aria-label="Close">
+              ×
+            </button>
+            <div className="optin-coin" aria-hidden="true">
+              <TokenCoin />
+            </div>
+
+            {status === 'done' ? (
+              <>
+                <h3 id="optin-title">
+                  {SUCCESS.title.replace('.', '')}
+                  {firstName ? `, ${firstName.trim()}.` : '.'}
+                </h3>
+                <p className="optin-sub">{SUCCESS.body}</p>
+                <a className="btn btn-gold btn-block" href={scorecardUrl()} onClick={onHandoff}>
+                  {SUCCESS.cta}
+                </a>
+                <p className="optin-micro">{SUCCESS.micro}</p>
+              </>
+            ) : (
+              <>
+                <div className="optin-eyebrow">{MODAL.eyebrow}</div>
+                <h3 id="optin-title">{MODAL.title}</h3>
+                <p className="optin-sub">{MODAL.sub}</p>
+                <form onSubmit={onSubmit} noValidate>
+                  <input
+                    type="text"
+                    name="firstName"
+                    placeholder={FORM.firstName}
+                    autoComplete="given-name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder={FORM.email}
+                    autoComplete="email"
+                    inputMode="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  {/* honeypot */}
+                  <input
+                    type="text"
+                    name="company"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    style={{ display: 'none' }}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                  {error && <div className="optin-err">{error}</div>}
+                  <button type="submit" className="btn btn-gold btn-block" disabled={status === 'sending'}>
+                    {status === 'sending' ? 'One moment…' : MODAL.submit}
+                  </button>
+                </form>
+                <p className="optin-micro">{MODAL.micro}</p>
+                <p className="optin-privacy">{MODAL.privacy}</p>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </>
   )
 }
