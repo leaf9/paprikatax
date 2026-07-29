@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import TokenCoin from '../components/TokenCoin'
 import { LINKS, PRICE } from '../config'
 import {
-  HERO, FORM, MODAL, SUCCESS, CONTRAST, WHATS_INSIDE, KIT, FINAL_CTA, FOOTER,
+  HERO, FORM, MODAL, SUCCESS, CONTRAST, WHATS_INSIDE, KIT, FINAL_CTA, FOOTER, ADVISOR_LINK,
 } from '../content/landingScorecard'
 import { checkoutUrl, submitNetlifyForm, track, withAttribution } from '../lib/tracking'
 import { usePageMeta } from '../lib/meta'
@@ -122,6 +122,7 @@ export default function ScorecardLanding() {
               </button>
             </div>
             <p className="micro">{HERO.ctaMicro}</p>
+            <AdvisorLink />
           </div>
         </div>
       </section>
@@ -137,6 +138,7 @@ export default function ScorecardLanding() {
                 {CONTRAST.headlineCta} →
               </button>
             </p>
+            <AdvisorLink center />
           </div>
           <div className="sc-contrast">
             {CONTRAST.panels.map((p) => (
@@ -155,6 +157,7 @@ export default function ScorecardLanding() {
               {FINAL_CTA.cta} →
             </button>
           </p>
+          <AdvisorLink center />
         </div>
       </section>
 
@@ -188,6 +191,7 @@ export default function ScorecardLanding() {
               {WHATS_INSIDE.cta} →
             </button>
           </p>
+          <AdvisorLink center />
         </div>
       </section>
 
@@ -213,6 +217,7 @@ export default function ScorecardLanding() {
                 {KIT.cta}
               </a>
               <p className="micro">{KIT.micro}</p>
+              <AdvisorLink center />
             </div>
           </div>
         </div>
@@ -231,6 +236,7 @@ export default function ScorecardLanding() {
               {FINAL_CTA.cta} →
             </button>
           </div>
+          <AdvisorLink center />
         </div>
       </section>
 
@@ -334,6 +340,17 @@ export default function ScorecardLanding() {
         </div>
       )}
     </>
+  )
+}
+
+// Small routing link under CTAs — sends advisors out of the consumer funnel.
+function AdvisorLink({ center }) {
+  return (
+    <p className={`advisor-link ${center ? 'center' : ''}`}>
+      <a href={ADVISOR_LINK.href} onClick={() => track('AdvisorLinkClick', {})}>
+        {ADVISOR_LINK.label}
+      </a>
+    </p>
   )
 }
 

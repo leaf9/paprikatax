@@ -626,6 +626,39 @@
   }
 }
 
+/* advisor routing link under CTAs */
+.advisor-link {
+  margin-top: 10px;
+  font-size: 12.5px;
+}
+
+.advisor-link.center { text-align: center; }
+
+.advisor-link a {
+  color: var(--ink-3);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.advisor-link a:hover { color: var(--paprika); }
+
+.sc-hero .advisor-link a,
+.sc-final .advisor-link a {
+  color: rgba(250, 245, 236, 0.55);
+}
+
+.sc-hero .advisor-link a:hover,
+.sc-final .advisor-link a:hover {
+  color: var(--cream);
+}
+
+/* mobile: center the hero CTA stack (other sections are already centered) */
+@media (max-width: 639px) {
+  .sc-hero .hero-ctas { justify-content: center; }
+  .sc-hero .micro,
+  .sc-hero .advisor-link { text-align: center; }
+}
+
 /* hero bullets on the dark hero */
 .sc-bullets-dark { margin-bottom: 22px; }
 

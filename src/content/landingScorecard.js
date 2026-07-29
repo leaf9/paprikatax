@@ -13,7 +13,7 @@
 export const HERO = {
   eyebrow: 'Free · for business-owner parents',
   headline: 'Hiring your kids can save thousands — if the paperwork holds up.',
-  sub: 'Plenty of business owners pay their kids through the business; few keep the records that make it stick. When the taxman knocks — around here we call him Peter — the difference between keeping the savings and handing them back is a folder of paperwork. Already doing it or just considering it, you’ll know where you stand in 2 minutes.',
+  sub: 'Whether you already pay your kids or you’re just considering it, you’ll know where you stand in 2 minutes.',
   cta: 'Get my free scorecard',
   ctaMicro: 'Free · takes about 2 minutes · from a licensed CPA firm',
   // Rendered as a faded background; wide crop keeps Peter's knock visible
@@ -22,6 +22,12 @@ export const HERO = {
     src: '/assets/story-knock-wide.jpg',
     alt: '',
   },
+}
+
+// Routes advisors out of the consumer funnel at every decision point.
+export const ADVISOR_LINK = {
+  label: 'Tax advisors click here',
+  href: 'https://paprikatax.com/tax-advisors/',
 }
 
 export const FORM = {
