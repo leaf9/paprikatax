@@ -1,15 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
-import { LINKS } from '../config'
+import { LINKS, PRICE } from '../config'
 import {
-  HERO, FORM, SUCCESS, CONTRAST, WHATS_INSIDE, FINAL_CTA, FOOTER,
+  HERO, FORM, SUCCESS, CONTRAST, WHATS_INSIDE, KIT, FINAL_CTA, FOOTER,
 } from '../content/landingScorecard'
-import { submitNetlifyForm, track, withAttribution } from '../lib/tracking'
+import { checkoutUrl, submitNetlifyForm, track, withAttribution } from '../lib/tracking'
 import { usePageMeta } from '../lib/meta'
 
 // Lead-capture landing page for the "Peter the Great" ad → free Risk Scorecard
 // + 100 ideas. Chrome-free (rendered outside SiteLayout). The scorecard itself
 // lives in the client's app; we capture the lead FIRST, then hand off with
 // name/email in the URL so his app can skip its own capture step.
+// Speaks to BOTH audiences: already paying their kids, and not yet started.
 export default function ScorecardLanding() {
   const [showSticky, setShowSticky] = useState(false)
   const [status, setStatus] = useState('idle') // idle | sending | done
@@ -21,7 +22,7 @@ export default function ScorecardLanding() {
 
   usePageMeta(
     'Free Family Payroll Risk Scorecard',
-    'Paying your kids through the business? Find out in 2 minutes whether your paperwork would hold up — plus 100+ real jobs kids can legitimately do, by age.',
+    'Hiring your kids can save thousands — if the paperwork holds up. Find out where you stand in 2 minutes, plus 100+ real jobs kids can legitimately do, by age.',
     { robots: 'noindex' }
   )
 
@@ -45,6 +46,9 @@ export default function ScorecardLanding() {
   // his app can prefill and skip re-asking for the email.
   const scorecardUrl = () =>
     withAttribution(LINKS.scorecardApp, { fname: firstName.trim(), email: email.trim() })
+
+  const buyUrl = checkoutUrl(LINKS.checkout)
+  const onBuyClick = () => track('InitiateCheckout', { value: PRICE.kit, currency: 'USD' })
 
   async function onSubmit(e) {
     e.preventDefault()
@@ -134,20 +138,19 @@ export default function ScorecardLanding() {
         </div>
       </header>
 
-      {/* HERO + FORM */}
+      {/* HERO + FORM — Peter at the door as a subtle faded background */}
       <section className="hero sc-hero" ref={heroRef}>
-        <div className="container sc-hero-grid">
-          <div>
+        <div className="hero-bg" aria-hidden="true">
+          <img src={HERO.background.src} alt="" loading="eager" style={{ objectPosition: '78% 20%' }} />
+        </div>
+        <div className="container">
+          <div style={{ maxWidth: 620 }}>
             <div className="eyebrow">{HERO.eyebrow}</div>
             <h1>{HERO.headline}</h1>
             <p className="sub">{HERO.sub}</p>
             {formCard}
             <p className="micro" style={{ marginTop: 12 }}>{FORM.privacy}</p>
           </div>
-          <figure className="sc-panel sc-hero-panel">
-            <img src={HERO.image.src} alt={HERO.image.alt} />
-            <figcaption>{HERO.imageCaption}</figcaption>
-          </figure>
         </div>
       </section>
 
@@ -178,46 +181,72 @@ export default function ScorecardLanding() {
         </div>
       </section>
 
-      {/* WHAT'S INSIDE */}
+      {/* WHAT'S INSIDE — two columns, icons, no photo */}
       <section className="section" style={{ background: 'var(--cream-2)' }}>
         <div className="container">
-          <div className="section-head">
+          <div className="section-head" style={{ textAlign: 'center', margin: '0 auto', marginBottom: 'clamp(28px, 5vw, 48px)' }}>
             <span className="kicker">{WHATS_INSIDE.kicker}</span>
             <h2>{WHATS_INSIDE.headline}</h2>
           </div>
-          <div className="sc-inside">
-            <div className="sc-inside-col">
-              <h3>{WHATS_INSIDE.scorecard.title}</h3>
-              <ul>
-                {WHATS_INSIDE.scorecard.points.map((pt) => (
-                  <li key={pt.slice(0, 24)}>{pt}</li>
-                ))}
-              </ul>
-              <h3 style={{ marginTop: 22 }}>{WHATS_INSIDE.ideas.title}</h3>
-              <ul>
-                {WHATS_INSIDE.ideas.points.map((pt) => (
-                  <li key={pt.slice(0, 24)}>{pt}</li>
-                ))}
-              </ul>
-              <div className="trust-chips sc-chips">
-                {WHATS_INSIDE.trustChips.map((chip) => (
-                  <span key={chip}>{chip}</span>
-                ))}
+          <div className="sc-cols">
+            {WHATS_INSIDE.columns.map((col) => (
+              <div className="sc-col" key={col.title}>
+                <SectionIcon name={col.icon} />
+                <h3>{col.title}</h3>
+                <ul>
+                  {col.points.map((pt) => (
+                    <li key={pt.slice(0, 24)}>{pt}</li>
+                  ))}
+                </ul>
               </div>
+            ))}
+          </div>
+          <div className="trust-chips sc-chips" style={{ justifyContent: 'center' }}>
+            {WHATS_INSIDE.trustChips.map((chip) => (
+              <span key={chip}>{chip}</span>
+            ))}
+          </div>
+          <p style={{ textAlign: 'center', marginTop: 22 }}>
+            <a className="btn btn-primary" href="#get" onClick={scrollToForm}>
+              {WHATS_INSIDE.cta} →
+            </a>
+          </p>
+        </div>
+      </section>
+
+      {/* THE KIT — the core product, plainly presented */}
+      <section className="section" style={{ background: 'var(--cream)' }}>
+        <div className="container">
+          <div className="section-head" style={{ textAlign: 'center', margin: '0 auto', marginBottom: 'clamp(24px, 4vw, 40px)' }}>
+            <span className="kicker">{KIT.kicker}</span>
+            <h2>{KIT.headline}</h2>
+            <p className="sub">{KIT.sub}</p>
+          </div>
+          <div className="sc-kit">
+            <ul>
+              {KIT.items.map((item) => (
+                <li key={item.slice(0, 24)}>{item}</li>
+              ))}
+            </ul>
+            <div className="sc-kit-buy">
+              <div className="price-tag">
+                <span className="amount">{KIT.price}</span> <span className="period">{KIT.period}</span>
+              </div>
+              <a className="btn btn-primary btn-block" href={buyUrl} onClick={onBuyClick}>
+                {KIT.cta}
+              </a>
+              <p className="micro">{KIT.micro}</p>
             </div>
-            <figure className="sc-panel">
-              <img src={WHATS_INSIDE.ideas.image.src} alt={WHATS_INSIDE.ideas.image.alt} loading="lazy" />
-            </figure>
           </div>
         </div>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="section final">
+      {/* FINAL CTA — token as a subtle faded background */}
+      <section className="section final sc-final">
+        <div className="hero-bg bg-soft" aria-hidden="true">
+          <img src={FINAL_CTA.background.src} alt="" loading="lazy" />
+        </div>
         <div className="container">
-          <figure className="sc-panel sc-token">
-            <img src={FINAL_CTA.image.src} alt={FINAL_CTA.image.alt} loading="lazy" />
-          </figure>
           <h2>{FINAL_CTA.headline}</h2>
           <p className="sub">{FINAL_CTA.sub}</p>
           <div className="final-ctas">
@@ -245,13 +274,33 @@ export default function ScorecardLanding() {
       {/* STICKY BAR */}
       <div className={`sticky-bar ${showSticky && status !== 'done' ? 'show' : ''}`}>
         <div className="label">
-          Would your paperwork hold up?
-          <small>Free scorecard · 2 minutes</small>
+          Get the free Risk Scorecard
+          <small>2 minutes · plus 100+ job ideas</small>
         </div>
         <a href="#get" className="btn btn-primary" onClick={scrollToForm}>
           Find out →
         </a>
       </div>
     </>
+  )
+}
+
+// Simple brand-colored line icons for the what's-inside columns.
+function SectionIcon({ name }) {
+  return (
+    <span className="sc-icon" aria-hidden="true">
+      {name === 'shield' ? (
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M24 5 L40 11 v11 c0 10 -7 17 -16 21 C15 39 8 32 8 22 V11 Z" />
+          <path d="M17 24 l5 5 l9 -11" />
+        </svg>
+      ) : (
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M24 6 a12 12 0 0 1 7 21.6 c-1.6 1.3 -2.4 2.6 -2.6 4.4 h-8.8 c-0.2 -1.8 -1 -3.1 -2.6 -4.4 A12 12 0 0 1 24 6 Z" />
+          <path d="M19.6 37 h8.8 M21 41.5 h6" />
+          <path d="M20 18.5 l3 3 l5.5 -6" />
+        </svg>
+      )}
+    </span>
   )
 }

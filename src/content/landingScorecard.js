@@ -12,13 +12,13 @@
 
 export const HERO = {
   eyebrow: 'Free · for business-owner parents',
-  headline: 'You’re already paying your kids. Could you prove it?',
-  sub: 'Somewhere between allowance and payroll, most families skip the paperwork. When the taxman knocks — around here we call him Peter — the difference between keeping your savings and handing them back is a folder of records. Find out in 2 minutes whether yours would hold up.',
-  image: {
+  headline: 'Hiring your kids can save thousands — if the paperwork holds up.',
+  sub: 'Plenty of business owners pay their kids through the business; few keep the records that make it stick. When the taxman knocks — around here we call him Peter — the difference between keeping the savings and handing them back is a folder of paperwork. Already doing it or just considering it, you’ll know where you stand in 2 minutes.',
+  // Rendered as a subtle faded background, not a foreground panel.
+  background: {
     src: '/assets/story-knock.jpg',
-    alt: 'Peter the Great, in full imperial dress, knocking on the door of a modern American farmhouse',
+    alt: '',
   },
-  imageCaption: 'He still makes house calls.',
 }
 
 export const FORM = {
@@ -57,42 +57,63 @@ export const CONTRAST = {
       caption: 'Records ready. Peter checks the stack, finds everything, and leaves with nothing.',
     },
   ],
-  bridge: 'The scorecard tells you which Boris you are right now — and exactly what would change the ending.',
+  bridge: 'The scorecard tells you which Boris you’d be when the knock comes — and exactly what changes the ending.',
 }
 
 export const WHATS_INSIDE = {
   kicker: 'What you get',
   headline: 'Two tools, one email.',
-  scorecard: {
-    title: 'The Family Payroll Risk Scorecard',
-    points: [
-      'The 7 checks an auditor actually makes — job description, time records, payroll trail, W-2, wage basis, labor rules, workers’ comp',
-      'Your exposure score, in plain English',
-      'What closes each gap — so you know exactly where you stand',
-    ],
-  },
-  ideas: {
-    title: 'Bonus: 100+ Tax-Savings Job Ideas',
-    points: [
-      'Real work kids 7–22 can legitimately do in a business like yours',
-      'Grouped by age, so you can start where your kids are',
-      'The roles that justify meaningful wages — not just chores with a paycheck',
-    ],
-    image: {
-      src: '/assets/story-kids-working.jpg',
-      alt: 'Boris painting Russian nesting dolls at a workbench with his two children, all working together',
+  columns: [
+    {
+      icon: 'shield',
+      title: 'The Family Payroll Risk Scorecard',
+      points: [
+        'The 7 checks an auditor actually makes — job description, time records, payroll trail, W-2, wage basis, labor rules, workers’ comp',
+        'Your exposure score, in plain English',
+        'What closes each gap — whether you’re fixing a setup or starting one from scratch',
+      ],
     },
-  },
+    {
+      icon: 'spark',
+      title: 'Bonus: 100+ Tax-Savings Job Ideas',
+      points: [
+        'Real work kids 7–22 can legitimately do in a business like yours',
+        'Grouped by age, so you can start where your kids are',
+        'The roles that justify meaningful wages — not just chores with a paycheck',
+      ],
+    },
+  ],
+  cta: 'Get both free',
   trustChips: ['Built by a 25-year CPA firm', '2-minute scorecard', 'Free email support if you have questions'],
+}
+
+// The core product, presented plainly as the next step. Keep it factual —
+// no funnel talk, no urgency mechanics.
+export const KIT = {
+  kicker: 'Your next step',
+  headline: 'Ready to do it right? That’s the Paprika Kit.',
+  sub: 'When you want more than a score: tell us about your business and your kids, and a licensed CPA runs the numbers and sends back your complete strategy — typically by the next business day.',
+  items: [
+    'Your highest defensible wage, calculated for your child’s actual role, state, and county',
+    'A signed CPA Opinion Letter',
+    'Step-by-step implementation — job descriptions, timesheets, payroll setup',
+    'Labor-law and workers’-comp checks for your state',
+    'A personal video from Dave Nagy, CPA, explaining your strategy',
+    'Free email support, plus one audit-support hour included',
+  ],
+  price: '$97',
+  period: 'one-time',
+  cta: 'Get the Paprika Kit — $97',
+  micro: 'One-time payment · No subscription · Secured by Stripe',
 }
 
 export const FINAL_CTA = {
   headline: 'Keep the beard. Carry the token.',
   sub: 'Two minutes now beats an awkward conversation later.',
   cta: 'Get my free scorecard',
-  image: {
+  // Rendered as a subtle faded background behind the closing section.
+  background: {
     src: '/assets/story-token.jpg',
-    alt: 'Peter the Great handing Boris a token on a chain in his workshop',
   },
 }
 

@@ -507,10 +507,135 @@
   color: var(--ink-2) !important;
 }
 
-.sc-token {
-  max-width: 300px;
-  margin: 0 auto 26px;
-  transform: rotate(-1.5deg);
+/* two-column what's-inside with icons */
+.sc-cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+@media (min-width: 760px) {
+  .sc-cols { grid-template-columns: 1fr 1fr; }
+}
+
+.sc-col {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: clamp(20px, 3vw, 28px);
+  box-shadow: var(--shadow);
+}
+
+.sc-col h3 { font-size: clamp(18px, 2.6vw, 21px); margin-bottom: 12px; }
+
+.sc-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.sc-col li {
+  font-size: 14.5px;
+  color: var(--ink-2);
+  padding-left: 26px;
+  position: relative;
+}
+
+.sc-col li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--olive-deep);
+  font-weight: 800;
+}
+
+.sc-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(193, 82, 38, 0.1);
+  color: var(--paprika);
+  margin-bottom: 14px;
+}
+
+.sc-icon svg { width: 30px; height: 30px; }
+
+/* compact kit offer */
+.sc-kit {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 880px;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: clamp(22px, 3.6vw, 34px);
+  align-items: center;
+}
+
+@media (min-width: 800px) {
+  .sc-kit { grid-template-columns: 1.2fr 0.8fr; }
+}
+
+.sc-kit ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sc-kit li {
+  font-size: 14.5px;
+  color: var(--ink-2);
+  padding-left: 26px;
+  position: relative;
+}
+
+.sc-kit li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--olive-deep);
+  font-weight: 800;
+}
+
+.sc-kit-buy {
+  text-align: center;
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+
+@media (min-width: 800px) {
+  .sc-kit-buy {
+    border-top: none;
+    border-left: 1px solid var(--line);
+    padding-top: 0;
+    padding-left: 28px;
+  }
+}
+
+/* softer uniform overlay for centered dark sections with a bg image */
+.sc-final { position: relative; overflow: hidden; }
+
+.sc-final .container { position: relative; z-index: 1; }
+
+.hero-bg.bg-soft img { object-position: center 30%; }
+
+.hero-bg.bg-soft::after {
+  background:
+    radial-gradient(ellipse at center, rgba(41, 35, 28, 0.82) 40%, rgba(41, 35, 28, 0.95) 100%);
 }
 
 /* ----- family photo bands ----- */
