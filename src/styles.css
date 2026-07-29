@@ -131,6 +131,15 @@ a { color: var(--paprika); }
 
 .btn-primary:hover { background: var(--paprika-deep); }
 
+/* purchase actions — visually distinct from free/lead CTAs (paprika) */
+.btn-buy {
+  background: var(--olive);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(104, 119, 68, 0.35);
+}
+
+.btn-buy:hover { background: var(--olive-deep); }
+
 .btn-ghost {
   background: transparent;
   color: var(--cream);

@@ -237,7 +237,7 @@ export default function ScorecardLanding() {
               <div className="price-tag">
                 <span className="amount">{KIT.price}</span> <span className="period">{KIT.period}</span>
               </div>
-              <a className="btn btn-primary btn-block" href={buyUrl} onClick={onBuyClick}>
+              <a className="btn btn-buy btn-block" href={buyUrl} onClick={onBuyClick}>
                 {KIT.cta}
               </a>
               <p className="micro">{KIT.micro}</p>
