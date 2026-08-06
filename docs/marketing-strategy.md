@@ -1,7 +1,21 @@
 # PaprikaTax — Full Marketing Strategy
 
-**Prepared:** 2026-07-26 · **Author:** Leaf9 · **Status:** for client review
-**Companion docs:** `diagnosis-and-path.md` (root-cause analysis), `funnel-strategy.md` (landing page rationale, partly superseded), `email-sequence.md`
+**Prepared:** 2026-07-26 · **Author:** Leaf9 · **Status:** partly superseded — read `pivot-advisor-channel.md` first
+**Companion docs:** `pivot-advisor-channel.md` (current direction), `diagnosis-and-path.md` (root-cause analysis), `funnel-strategy.md` (landing page rationale, partly superseded), `email-sequence.md`
+
+> ⚠️ **SUPERSEDED IN PART, 2026-08-06.** The client has pivoted to an **advisor-channel-first** model:
+> price raised from $97 to ~$475/case with a meeting included, sold through tax-advisor firms of 10–20
+> preparers via credit packages, tested on a ~20-firm warm pilot, with consumer Meta spend and the
+> consumer site rebuild paused. That **inverts §6 (offer ladder) and §7 (channel strategy)** below,
+> which assumed consumer-first acquisition with the advisor channel running in parallel.
+>
+> Still current and load-bearing: **§3 ICP** (entity type as the value driver — now the pilot's
+> case-screening criterion), **§4 pain map**, **§5 positioning and the verified authority narrative**
+> (which lands harder on a CPA audience than a consumer one), **§8 Q4 seasonality** (wages must be paid
+> in-year, so the pilot's selling window closes 31 December), and the capacity/regulatory risks in §12 —
+> both now urgent rather than theoretical.
+>
+> Review and recommendations on the pivot: **`pivot-advisor-channel.md`**.
 
 ---
 
